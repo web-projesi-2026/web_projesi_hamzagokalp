@@ -1,1 +1,122 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hamza Gökalp | Portfolio</title>
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <link rel="stylesheet" href="assets/css/responsive.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+</head>
+<body>
 
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">HG<span class="dot">.</span></a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html" class="active">Ana Sayfa</a></li>
+        <li><a href="pages/about.html">Hakkımda</a></li>
+        <li><a href="pages/skills.html">Beceriler</a></li>
+        <li><a href="pages/projects.html">Projeler</a></li>
+        <li><a href="pages/blog.html">Blog</a></li>
+        <li><a href="pages/services.html">Hizmetler</a></li>
+        <li><a href="pages/contact.html">İletişim</a></li>
+      </ul>
+      <div class="nav-auth">
+        <a href="pages/login.html" class="nav-btn-login">Giriş Yap</a>
+        <a href="pages/register.html" class="nav-btn-register">Kayıt Ol</a>
+      </div>
+      <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+
+  <section class="hero" id="hero">
+    <div class="hero-grid-bg"></div>
+    <div class="hero-glow hero-glow-1"></div>
+    <div class="hero-glow hero-glow-2"></div>
+
+    <div class="hero-inner container">
+      <div class="hero-left">
+        <div class="hero-tag">
+          <span class="hero-tag-dot"></span>
+          Müsait — Proje teklifleri için iletişime geçin
+        </div>
+        <h1 class="hero-name">
+          Hamza<br><span class="hl">Gökalp</span>
+        </h1>
+        <div class="hero-typed-row">
+          <span>Ben bir </span>
+          <span class="typed-text" id="typedText"></span>
+          <span class="typed-cursor">|</span>
+        </div>
+        <p class="hero-desc">
+          Bilgisayar Programcılığı öğrencisi. Temiz kod yazmayı, 
+          problem çözmeyi ve yeni teknolojiler öğrenmeyi seviyorum.
+        </p>
+        <div class="hero-btns">
+          <a href="pages/projects.html" class="btn btn-primary"><i class="fas fa-code"></i> Projelerimi Gör</a>
+          <a href="pages/contact.html"  class="btn btn-outline"><i class="fas fa-paper-plane"></i> İletişim</a>
+        </div>
+        <div class="hero-stats">
+          <div>
+            <div class="h-stat-num">12+</div>
+            <div class="h-stat-label">Proje</div>
+          </div>
+          <div>
+            <div class="h-stat-num">3+</div>
+            <div class="h-stat-label">Yıl Deneyim</div>
+          </div>
+          <div>
+            <div class="h-stat-num">8+</div>
+            <div class="h-stat-label">Teknoloji</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-right">
+        <div class="terminal-card">
+          <div class="terminal-bar">
+            <div class="t-dot t-dot-r"></div>
+            <div class="t-dot t-dot-y"></div>
+            <div class="t-dot t-dot-g"></div>
+            <span class="terminal-title">hamza@portfolio ~ </span>
+          </div>
+          <div class="terminal-body">
+            <div class="t-line"><span class="t-prompt">$</span><span class="t-cmd"> whoami</span></div>
+            <div class="t-line"><span class="t-out t-green">Hamza Gökalp</span></div>
+            <div class="t-blank"></div>
+            <div class="t-line"><span class="t-prompt">$</span><span class="t-cmd"> cat about.txt</span></div>
+            <div class="t-line"><span class="t-out t-cyan">Bilgisayar Programcılığı Öğrencisi</span></div>
+            <div class="t-line"><span class="t-out">Ankara, Türkiye 📍</span></div>
+            <div class="t-blank"></div>
+            <div class="t-line"><span class="t-prompt">$</span><span class="t-cmd"> ls skills/</span></div>
+            <div class="t-line"><span class="t-out t-yellow">Python  Java  JavaScript  PHP</span></div>
+            <div class="t-line"><span class="t-out t-yellow">HTML5   CSS3  MySQL  Git</span></div>
+            <div class="t-blank"></div>
+            <div class="t-line"><span class="t-prompt">$</span><span class="t-cmd"> echo $status</span></div>
+            <div class="t-line"><span class="t-out t-green">✓ Projelere hazır!</span></div>
+          </div>
+          <div class="hero-chips">
+            <span class="chip"><i class="fab fa-python"></i> Python</span>
+            <span class="chip"><i class="fab fa-java"></i> Java</span>
+            <span class="chip"><i class="fab fa-js"></i> JS</span>
+            <span class="chip"><i class="fab fa-php"></i> PHP</span>
+            <span class="chip"><i class="fab fa-git-alt"></i> Git</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <p>© 2025 <strong>Hamza Gökalp</strong>. Tüm hakları saklıdır.</p>
+      <p class="footer-sub">Sevgiyle kodlandı <i class="fas fa-heart"></i></p>
+    </div>
+  </footer>
+
+  <button class="scroll-top" id="scrollTop"><i class="fas fa-chevron-up"></i></button>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
