@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Hizmetler | Hamza Gökalp</title>
+  <link rel="stylesheet" href="../assets/css/style.css"/>
+  <link rel="stylesheet" href="../assets/css/responsive.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+</head>
+<body>
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="../index.html" class="nav-logo">HG<span class="dot">.</span></a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="../index.html">Ana Sayfa</a></li><li><a href="about.html">Hakkımda</a></li>
+        <li><a href="skills.html">Beceriler</a></li><li><a href="projects.html">Projeler</a></li>
+        <li><a href="blog.html">Blog</a></li><li><a href="services.html" class="active">Hizmetler</a></li><li><a href="contact.html">İletişim</a></li>
+      </ul>
+      <div class="nav-auth"><a href="login.html" class="nav-btn-login">Giriş Yap</a><a href="register.html" class="nav-btn-register">Kayıt Ol</a></div>
+      <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+
+  <section class="page-hero">
+    <div class="ph-bg"><div class="ph-glow ph-glow-1"></div><div class="ph-glow ph-glow-2"></div></div>
+    <div class="page-hero-content container">
+      <div class="breadcrumb"><a href="../index.html">Ana Sayfa</a><i class="fas fa-chevron-right"></i>Hizmetler</div>
+      <h1>Neler <span class="hl">Sunuyorum?</span></h1>
+      <p>Proje ihtiyaçlarınız için sunduğum hizmetler.</p>
+    </div>
+  </section>
+
+  <section class="services-page">
+    <div class="container">
+      <div class="services-grid">
+
+        <div class="service-card">
+          <div class="service-icon"><i class="fas fa-globe"></i></div>
+          <div class="service-title">Web Sitesi Geliştirme</div>
+          <p class="service-desc">HTML, CSS, JavaScript ve PHP kullanarak responsive, modern web siteleri.</p>
+          <div class="service-items">
+            <div class="service-item"><i class="fas fa-check-circle"></i> Kurumsal / Kişisel Siteler</div>
+            <div class="service-item"><i class="fas fa-check-circle"></i> Admin Paneli</div>
+            <div class="service-item"><i class="fas fa-check-circle"></i> Mobil Uyumlu Tasarım</div>
+            <div class="service-item"><i class="fas fa-check-circle"></i> SEO Temelleri</div>
+          </div>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon"><i class="fas fa-shopping-cart"></i></div>
+          <div class="service-title">E-Ticaret Çözümleri</div>
+          <p class="service-desc">Ürün yönetimi, ödeme entegrasyonu ve sipariş takibi olan alışveriş siteleri.</p>
+          <div class="service-items">
+            <div class="service-item"><i class="fas fa-check-circle"></i> Ürün Kataloğu</div>
+            <div class="service-item"><i class="fas fa-check-circle"></i> Sepet & Sipariş</div>
+            <div class="service-item"><i class="fas fa-check-circle"></i> Stok Yönetimi</div>
+            <div class="service-item"><i class="fas fa-check-circle"></i> Müşteri Paneli</div>
+          </div>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon"><i class="fas fa-database"></i></div>
+          <div class="service-title">Veritabanı Tasarımı</div>
+          <p class="service-desc">MySQL ile normalize edilmiş, performanslı veritabanı şemaları ve sorgular.</p>
+          <div class="service-items">
+            <div class="service-item"><i class="fas fa-check-circle"></i> Şema Tasarımı</div>
+            <div class="service-item"><i class="fas fa-check-circle"></i> Sorgu Optimizasyonu</div>
+            <div class="service-item"><i class="fas fa-check-circle"></i> Veri Göçü</div>
+          </div>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon"><i class="fab fa-python"></i></div>
+          <div class="service-title">Python Otomasyon</div>
+          <p class="service-desc">Tekrarlayan işleri otomatikleştiren scriptler ve otomasyon araçları.</p>
+          <div class="service-items">
+            <div class="service-item"><i class="fas fa-check-circle"></i> Web Scraping</div>
+            <div class="service-item"><i class="fas fa-check-circle"></i> Dosya İşlemleri</div>
+            <div class="service-item"><i class="fas fa-check-circle"></i> API Entegrasyonu</div>
+            <div class="service-item"><i class="fas fa-check-circle"></i> Veri Analizi</div>
+          </div>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon"><i class="fas fa-plug"></i></div>
+          <div class="service-title">REST API Geliştirme</div>
+          <p class="service-desc">Backend servisleri ve mobil/web uygulamalar için API tasarımı.</p>
+          <div class="service-items">
+            <div class="service-item"><i class="fas fa-check-circle"></i> CRUD Endpoint'leri</div>
+            <div class="service-item"><i class="fas fa-check-circle"></i> JWT / Session Auth</div>
+            <div class="service-item"><i class="fas fa-check-circle"></i> Dokümantasyon</div>
+          </div>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon"><i class="fas fa-bug"></i></div>
+          <div class="service-title">Kod İnceleme & Debug</div>
+          <p class="service-desc">Mevcut projenizde hata tespiti, performans iyileştirme ve kod kalitesi analizi.</p>
+          <div class="service-items">
+            <div class="service-item"><i class="fas fa-check-circle"></i> Bug Tespiti</div>
+            <div class="service-item"><i class="fas fa-check-circle"></i> Refactoring</div>
+            <div class="service-item"><i class="fas fa-check-circle"></i> Performans Analizi</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer"><div class="container"><p>© 2025 <strong>Hamza Gökalp</strong>. Tüm hakları saklıdır.</p></div></footer>
+  <button class="scroll-top" id="scrollTop"><i class="fas fa-chevron-up"></i></button>
+  <script src="../assets/js/main.js"></script>
+</body>
+</html>

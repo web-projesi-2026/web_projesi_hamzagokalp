@@ -1,1 +1,97 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hakkımda | Hamza Gökalp</title>
+  <link rel="stylesheet" href="../assets/css/style.css" />
+  <link rel="stylesheet" href="../assets/css/responsive.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="../index.html" class="nav-logo">HG<span class="dot">.</span></a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="../index.html">Ana Sayfa</a></li>
+        <li><a href="about.html" class="active">Hakkımda</a></li>
+        <li><a href="skills.html">Beceriler</a></li>
+        <li><a href="projects.html">Projeler</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="services.html">Hizmetler</a></li>
+        <li><a href="contact.html">İletişim</a></li>
+      </ul>
+      <div class="nav-auth">
+        <a href="login.html" class="nav-btn-login">Giriş Yap</a>
+        <a href="register.html" class="nav-btn-register">Kayıt Ol</a>
+      </div>
+      <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
 
+  <section class="page-hero">
+    <div class="ph-bg"><div class="ph-glow ph-glow-1"></div><div class="ph-glow ph-glow-2"></div></div>
+    <div class="page-hero-content container">
+      <div class="breadcrumb"><a href="../index.html">Ana Sayfa</a><i class="fas fa-chevron-right"></i>Hakkımda</div>
+      <h1>Ben <span class="hl">Kimim?</span></h1>
+      <p>Kodlama tutkusu olan, sürekli öğrenen bir yazılım geliştiricisi.</p>
+    </div>
+  </section>
+
+  <section class="about-page">
+    <div class="container">
+      <div class="about-grid">
+        <div>
+          <div class="about-avatar-box">HG</div>
+          <div class="info-cards">
+            <div class="info-card">
+              <div class="info-icon"><i class="fas fa-user"></i></div>
+              <div><span class="info-label">Ad Soyad</span><span class="info-val">Hamza Gökalp</span></div>
+            </div>
+            <div class="info-card">
+              <div class="info-icon"><i class="fas fa-map-marker-alt"></i></div>
+              <div><span class="info-label">Konum</span><span class="info-val">Ankara, Türkiye</span></div>
+            </div>
+            <div class="info-card">
+              <div class="info-icon"><i class="fas fa-graduation-cap"></i></div>
+              <div><span class="info-label">Eğitim</span><span class="info-val">Bilgisayar Programcılığı</span></div>
+            </div>
+            <div class="info-card">
+              <div class="info-icon"><i class="fas fa-envelope"></i></div>
+              <div><span class="info-label">E-posta</span><span class="info-val">hamza@example.com</span></div>
+            </div>
+          </div>
+          <a href="#" class="cv-btn mt-16"><i class="fas fa-download"></i> CV İndir</a>
+        </div>
+
+        <div class="about-right">
+          <h2>Merhaba! 👋</h2>
+          <p>Ben Hamza Gökalp. Bilgisayar Programcılığı bölümü öğrencisiyim. Yazılım geliştirmeye olan ilgim lise yıllarımda başladı ve her geçen gün daha derinleşiyor.</p>
+          <p>Backend geliştirme, veritabanı tasarımı ve web uygulamaları konularında kendimi geliştiriyorum. Özellikle Python ve Java ile çeşitli projeler ürettim. Temiz, okunabilir ve sürdürülebilir kod yazmayı hedefliyorum.</p>
+          <p>Boş zamanlarımda açık kaynak projelere katkıda bulunmayı, teknoloji blogları okumayı ve yeni framework'ler denemeyi seviyorum.</p>
+
+          <div class="tl">
+            <div class="tl-title"><i class="fas fa-briefcase" style="color:var(--primary);margin-right:8px"></i>Deneyim & Eğitim</div>
+            <div class="tl-item">
+              <div class="tl-left"><div class="tl-dot"></div><div class="tl-line"></div></div>
+              <div class="tl-content"><div class="tl-year">2024 – Devam</div><h4>Freelance Web Geliştirici</h4><p>Küçük işletmeler için web sitesi ve otomasyon araçları geliştirme.</p></div>
+            </div>
+            <div class="tl-item">
+              <div class="tl-left"><div class="tl-dot"></div><div class="tl-line"></div></div>
+              <div class="tl-content"><div class="tl-year">2023 – 2024</div><h4>Staj — Yazılım Firması</h4><p>PHP/MySQL tabanlı kurumsal uygulama geliştirme stajı.</p></div>
+            </div>
+            <div class="tl-item">
+              <div class="tl-left"><div class="tl-dot"></div><div class="tl-line"></div></div>
+              <div class="tl-content"><div class="tl-year">2022 – Devam</div><h4>Bilgisayar Programcılığı — Üniversite</h4><p>Algoritmalar, veri yapıları, yazılım mühendisliği temelleri.</p></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer"><div class="container"><p>© 2025 <strong>Hamza Gökalp</strong>. Tüm hakları saklıdır.</p></div></footer>
+  <button class="scroll-top" id="scrollTop"><i class="fas fa-chevron-up"></i></button>
+  <script src="../assets/js/main.js"></script>
+</body>
+</html>
