@@ -1,98 +1,165 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-  <title>Kayıt Ol | Hamza Gökalp</title>
-  <link rel="stylesheet" href="../assets/css/style.css"/>
-  <link rel="stylesheet" href="../assets/css/responsive.css"/>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes" />
+  <meta name="description" content="Hamza Gökalp - Projeler" />
+  <meta name="keywords" content="projeler, portfolio, yazılım geliştirme" />
+  <meta name="theme-color" content="#10b981" />
+  <title>Projeler | Hamza Gökalp</title>
+  <link rel="stylesheet" href="../assets/css/style.css" />
+  <link rel="stylesheet" href="../assets/css/responsive.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
 </head>
-<body class="auth-page">
-  <a href="../index.html" class="back-home"><i class="fas fa-arrow-left"></i> Ana Sayfa</a>
+<body>
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="../index.html" class="nav-logo">HG<span class="dot">.</span></a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="../index.html">Ana Sayfa</a></li>
+        <li><a href="about.html">Hakkımda</a></li>
+        <li><a href="skills.html">Beceriler</a></li>
+        <li><a href="projects.html" class="active">Projeler</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="services.html">Hizmetler</a></li>
+        <li><a href="contact.html">İletişim</a></li>
+      </ul>
+      <div class="nav-auth">
+        <a href="login.html" class="nav-btn-login">Giriş Yap</a>
+        <a href="register.html" class="nav-btn-register">Kayıt Ol</a>
+      </div>
+      <button class="hamburger" id="hamburger" aria-label="Menüyü aç/kapat" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
 
-  <div class="auth-card">
-    <div class="auth-side">
-      <div class="auth-side-logo">HG<span>.</span></div>
-      <h2>Aramıza Katılın!</h2>
-      <p>Hesap oluşturarak portfolio paneline erişin.</p>
-      <div class="auth-side-features">
-        <div class="auth-feat"><div class="auth-feat-icon">1</div><span class="auth-feat-text">Bilgilerinizi doldurun</span></div>
-        <div class="auth-feat"><div class="auth-feat-icon">2</div><span class="auth-feat-text">Hesabınızı oluşturun</span></div>
-        <div class="auth-feat"><div class="auth-feat-icon">3</div><span class="auth-feat-text">Panele erişin</span></div>
+  <section class="page-hero">
+    <div class="ph-bg"><div class="ph-glow ph-glow-1"></div><div class="ph-glow ph-glow-2"></div></div>
+    <div class="page-hero-content container">
+      <div class="breadcrumb"><a href="../index.html">Ana Sayfa</a><i class="fas fa-chevron-right"></i>Projeler</div>
+      <h1>Geliştirdiğim <span class="hl">Projeler</span></h1>
+      <p>Farklı teknolojilerle hayata geçirdiğim çalışmalar.</p>
+    </div>
+  </section>
+
+  <section class="projects-page">
+    <div class="container">
+      <div class="projects-grid">
+
+        <div class="project-card">
+          <div class="project-thumb project-thumb-1">🛒</div>
+          <div class="project-body">
+            <div class="project-langs">
+              <span class="lang-badge">PHP</span>
+              <span class="lang-badge">MySQL</span>
+              <span class="lang-badge">Bootstrap</span>
+            </div>
+            <div class="project-title">E-Ticaret Uygulaması</div>
+            <p class="project-desc">Ürün yönetimi, sepet ve sipariş takibi olan tam kapsamlı bir alışveriş sitesi.</p>
+            <div class="project-links">
+              <a href="#" class="project-link"><i class="fab fa-github"></i> GitHub</a>
+              <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i> Demo</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-thumb project-thumb-2">📊</div>
+          <div class="project-body">
+            <div class="project-langs">
+              <span class="lang-badge">Python</span>
+              <span class="lang-badge">SQLite</span>
+              <span class="lang-badge">Tkinter</span>
+            </div>
+            <div class="project-title">Bütçe Takip Uygulaması</div>
+            <p class="project-desc">Aylık gelir/gider takibi, grafik raporlama ve kategorilere göre analiz.</p>
+            <div class="project-links">
+              <a href="#" class="project-link"><i class="fab fa-github"></i> GitHub</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-thumb project-thumb-3">🎓</div>
+          <div class="project-body">
+            <div class="project-langs">
+              <span class="lang-badge">Java</span>
+              <span class="lang-badge">MySQL</span>
+              <span class="lang-badge">JavaFX</span>
+            </div>
+            <div class="project-title">Öğrenci Bilgi Sistemi</div>
+            <p class="project-desc">Öğrenci kayıt, not girişi ve devam takibi için masaüstü uygulaması.</p>
+            <div class="project-links">
+              <a href="#" class="project-link"><i class="fab fa-github"></i> GitHub</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-thumb project-thumb-4">🌤️</div>
+          <div class="project-body">
+            <div class="project-langs">
+              <span class="lang-badge">JavaScript</span>
+              <span class="lang-badge">REST API</span>
+              <span class="lang-badge">CSS3</span>
+            </div>
+            <div class="project-title">Hava Durumu Uygulaması</div>
+            <p class="project-desc">OpenWeather API ile anlık ve 5 günlük hava durumu gösterimi.</p>
+            <div class="project-links">
+              <a href="#" class="project-link"><i class="fab fa-github"></i> GitHub</a>
+              <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i> Demo</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-thumb project-thumb-5">✅</div>
+          <div class="project-body">
+            <div class="project-langs">
+              <span class="lang-badge">Python</span>
+              <span class="lang-badge">Flask</span>
+              <span class="lang-badge">SQLite</span>
+            </div>
+            <div class="project-title">Görev Yöneticisi API</div>
+            <p class="project-desc">RESTful API ile tam CRUD işlemleri, kullanıcı auth ve görev önceliklendirme.</p>
+            <div class="project-links">
+              <a href="#" class="project-link"><i class="fab fa-github"></i> GitHub</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-thumb project-thumb-6">💬</div>
+          <div class="project-body">
+            <div class="project-langs">
+              <span class="lang-badge">PHP</span>
+              <span class="lang-badge">WebSocket</span>
+              <span class="lang-badge">JS</span>
+            </div>
+            <div class="project-title">Gerçek Zamanlı Sohbet</div>
+            <p class="project-desc">Oda bazlı gerçek zamanlı mesajlaşma uygulaması. Kullanıcı listesi ve mesaj geçmişi.</p>
+            <div class="project-links">
+              <a href="#" class="project-link"><i class="fab fa-github"></i> GitHub</a>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
-    <div class="auth-panel">
-      <div class="auth-title">Kayıt Ol</div>
-      <div class="auth-sub">Zaten hesabınız var mı? <a href="login.html">Giriş yapın</a></div>
+  </section>
 
-      <form class="auth-form" action="../backend/php/auth.php" method="POST">
-        <input type="hidden" name="action" value="register"/>
-        <input type="hidden" name="csrf_token" id="csrfToken" value=""/>
-
-        <div class="auth-form-row">
-          <div class="auth-group">
-            <label>Ad</label>
-            <div class="input-wrap"><i class="fas fa-user fi"></i><input type="text" name="first_name" placeholder="Adınız" required/></div>
-          </div>
-          <div class="auth-group">
-            <label>Soyad</label>
-            <div class="input-wrap"><i class="fas fa-user fi"></i><input type="text" name="last_name" placeholder="Soyadınız" required/></div>
-          </div>
-        </div>
-
-        <div class="auth-group">
-          <label>E-posta</label>
-          <div class="input-wrap"><i class="fas fa-envelope fi"></i><input type="email" name="email" placeholder="ornek@email.com" required/></div>
-        </div>
-
-        <div class="auth-group">
-          <label>Şifre</label>
-          <div class="input-wrap">
-            <i class="fas fa-lock fi"></i>
-            <input type="password" name="password" id="pwInput" placeholder="En az 8 karakter, büyük harf ve rakam" required/>
-            <button type="button" class="eye-btn" id="eyeBtn1"><i class="fas fa-eye" id="eyeIcon1"></i></button>
-          </div>
-          <div class="pw-bars"><div class="pw-bar" id="b1"></div><div class="pw-bar" id="b2"></div><div class="pw-bar" id="b3"></div><div class="pw-bar" id="b4"></div></div>
-          <div class="pw-lbl" id="pwLbl">Şifre gücü</div>
-        </div>
-
-        <div class="auth-group">
-          <label>Şifre Tekrar</label>
-          <div class="input-wrap">
-            <i class="fas fa-lock fi"></i>
-            <input type="password" name="password_confirm" id="pwConfirm" placeholder="Şifrenizi tekrar girin" required/>
-            <button type="button" class="eye-btn" id="eyeBtn2"><i class="fas fa-eye" id="eyeIcon2"></i></button>
-          </div>
-        </div>
-
-        <label class="terms-row">
-          <input type="checkbox" name="terms" required/>
-          <span><a href="#">Kullanım şartlarını</a> okudum ve kabul ediyorum.</span>
-        </label>
-
-        <button type="submit" class="auth-submit"><i class="fas fa-user-plus"></i> Kayıt Ol</button>
-        <div class="auth-footer">Zaten hesabınız var mı? <a href="login.html">Giriş yapın</a></div>
-      </form>
+  <footer class="footer">
+    <div class="container">
+      <p>© 2025 <strong>Hamza Gökalp</strong>. Tüm hakları saklıdır.</p>
+      <p class="footer-sub">Sevgiyle kodlandı <i class="fas fa-heart"></i></p>
     </div>
-  </div>
-
-  <script>
-    [['eyeBtn1','pwInput','eyeIcon1'],['eyeBtn2','pwConfirm','eyeIcon2']].forEach(([b,i,ic])=>{
-      document.getElementById(b).addEventListener('click',()=>{
-        const inp=document.getElementById(i),icon=document.getElementById(ic),t=inp.type==='text';
-        inp.type=t?'password':'text';icon.className=t?'fas fa-eye':'fas fa-eye-slash';
-      });
-    });
-    const bars=[1,2,3,4].map(i=>document.getElementById('b'+i));
-    document.getElementById('pwInput').addEventListener('input',function(){
-      const v=this.value;let s=0;
-      if(v.length>=8)s++;if(/[A-Z]/.test(v))s++;if(/[0-9]/.test(v))s++;if(/[^A-Za-z0-9]/.test(v))s++;
-      const cls=['','weak','medium','strong','strong'],lbl=['','Zayıf','Orta','İyi','Güçlü'];
-      bars.forEach((b,i)=>b.className='pw-bar'+(i<s?' '+cls[s]:''));
-      document.getElementById('pwLbl').textContent=v.length?lbl[s]||'Çok zayıf':'Şifre gücü';
-    });
-    fetch('../backend/php/get_csrf.php').then(r=>r.json()).then(d=>{var el=document.getElementById('csrfToken');if(el)el.value=d.token;}).catch(()=>{});
-  </script>
+  </footer>
+  
+  <button class="scroll-top" id="scrollTop" aria-label="Sayfanın başına git"><i class="fas fa-chevron-up"></i></button>
+  <script src="../assets/js/main.js"></script>
 </body>
 </html>
