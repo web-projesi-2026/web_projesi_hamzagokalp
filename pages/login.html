@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes" />
+  <meta name="description" content="Hamza Gökalp - Giriş Yap" />
+  <meta name="theme-color" content="#10b981" />
   <title>Giriş Yap | Hamza Gökalp</title>
-  <link rel="stylesheet" href="../assets/css/style.css"/>
-  <link rel="stylesheet" href="../assets/css/responsive.css"/>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="../assets/css/style.css" />
+  <link rel="stylesheet" href="../assets/css/responsive.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
 </head>
 <body class="auth-page">
   <a href="../index.html" class="back-home"><i class="fas fa-arrow-left"></i> Ana Sayfa</a>
@@ -17,9 +20,18 @@
       <h2>Tekrar Hoş Geldiniz!</h2>
       <p>Hesabınıza giriş yaparak panele erişebilirsiniz.</p>
       <div class="auth-side-features">
-        <div class="auth-feat"><div class="auth-feat-icon"><i class="fas fa-shield-alt"></i></div><span class="auth-feat-text">Güvenli oturum yönetimi</span></div>
-        <div class="auth-feat"><div class="auth-feat-icon"><i class="fas fa-bolt"></i></div><span class="auth-feat-text">Hızlı erişim</span></div>
-        <div class="auth-feat"><div class="auth-feat-icon"><i class="fas fa-lock"></i></div><span class="auth-feat-text">Şifreli veri saklama</span></div>
+        <div class="auth-feat">
+          <div class="auth-feat-icon"><i class="fas fa-shield-alt"></i></div>
+          <span class="auth-feat-text">Güvenli oturum yönetimi</span>
+        </div>
+        <div class="auth-feat">
+          <div class="auth-feat-icon"><i class="fas fa-bolt"></i></div>
+          <span class="auth-feat-text">Hızlı erişim</span>
+        </div>
+        <div class="auth-feat">
+          <div class="auth-feat-icon"><i class="fas fa-lock"></i></div>
+          <span class="auth-feat-text">Şifreli veri saklama</span>
+        </div>
       </div>
     </div>
     <div class="auth-panel">
@@ -27,28 +39,30 @@
       <div class="auth-sub">Hesabınız yok mu? <a href="register.html">Kayıt olun</a></div>
 
       <form class="auth-form" action="../backend/php/auth.php" method="POST">
-        <input type="hidden" name="action" value="login"/>
-        <input type="hidden" name="csrf_token" id="csrfToken" value=""/>
+        <input type="hidden" name="action" value="login" />
+        <input type="hidden" name="csrf_token" id="csrfToken" value="" />
 
         <div class="auth-group">
-          <label>E-posta</label>
+          <label for="email">E-posta</label>
           <div class="input-wrap">
             <i class="fas fa-envelope fi"></i>
-            <input type="email" name="email" placeholder="ornek@email.com" required/>
+            <input type="email" id="email" name="email" placeholder="ornek@email.com" required />
           </div>
         </div>
 
         <div class="auth-group">
-          <label>Şifre</label>
+          <label for="pwInput">Şifre</label>
           <div class="input-wrap">
             <i class="fas fa-lock fi"></i>
-            <input type="password" name="password" id="pwInput" placeholder="Şifreniz" required/>
-            <button type="button" class="eye-btn" id="eyeBtn"><i class="fas fa-eye" id="eyeIcon"></i></button>
+            <input type="password" id="pwInput" name="password" placeholder="Şifreniz" required />
+            <button type="button" class="eye-btn" id="eyeBtn" aria-label="Şifreyi göster/gizle">
+              <i class="fas fa-eye" id="eyeIcon"></i>
+            </button>
           </div>
         </div>
 
         <label class="terms-row">
-          <input type="checkbox" name="remember"/>
+          <input type="checkbox" name="remember" />
           <span>Beni hatırla</span>
         </label>
 
@@ -59,11 +73,22 @@
   </div>
 
   <script>
-    document.getElementById('eyeBtn').addEventListener('click',()=>{
-      const inp=document.getElementById('pwInput'),icon=document.getElementById('eyeIcon');
-      const t=inp.type==='text';inp.type=t?'password':'text';icon.className=t?'fas fa-eye':'fas fa-eye-slash';
+    document.getElementById('eyeBtn').addEventListener('click', (e) => {
+      e.preventDefault();
+      const inp = document.getElementById('pwInput');
+      const icon = document.getElementById('eyeIcon');
+      const isText = inp.type === 'text';
+      inp.type = isText ? 'password' : 'text';
+      icon.className = isText ? 'fas fa-eye' : 'fas fa-eye-slash';
     });
-    fetch('../backend/php/get_csrf.php').then(r=>r.json()).then(d=>{var el=document.getElementById('csrfToken');if(el)el.value=d.token;}).catch(()=>{});
+    
+    fetch('../backend/php/get_csrf.php')
+      .then(r => r.json())
+      .then(d => {
+        const el = document.getElementById('csrfToken');
+        if (el) el.value = d.token;
+      })
+      .catch(() => {});
   </script>
 </body>
 </html>
