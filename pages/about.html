@@ -1,7 +1,11 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes" />
+  <meta name="description" content="Hamza Gökalp hakkında - Yazılım Geliştirici" />
+  <meta name="keywords" content="hamza gökalp, yazılım geliştirici, hakkında" />
+  <meta name="theme-color" content="#10b981" />
   <title>Hakkımda | Hamza Gökalp</title>
   <link rel="stylesheet" href="../assets/css/style.css" />
   <link rel="stylesheet" href="../assets/css/responsive.css" />
@@ -25,7 +29,11 @@
         <a href="login.html" class="nav-btn-login">Giriş Yap</a>
         <a href="register.html" class="nav-btn-register">Kayıt Ol</a>
       </div>
-      <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+      <button class="hamburger" id="hamburger" aria-label="Menüyü aç/kapat" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
     </div>
   </nav>
 
@@ -90,8 +98,14 @@
     </div>
   </section>
 
-  <footer class="footer"><div class="container"><p>© 2025 <strong>Hamza Gökalp</strong>. Tüm hakları saklıdır.</p></div></footer>
-  <button class="scroll-top" id="scrollTop"><i class="fas fa-chevron-up"></i></button>
+  <footer class="footer">
+    <div class="container">
+      <p>© 2025 <strong>Hamza Gökalp</strong>. Tüm hakları saklıdır.</p>
+      <p class="footer-sub">Sevgiyle kodlandı <i class="fas fa-heart"></i></p>
+    </div>
+  </footer>
+  
+  <button class="scroll-top" id="scrollTop" aria-label="Sayfanın başına git"><i class="fas fa-chevron-up"></i></button>
   <script src="../assets/js/main.js"></script>
 </body>
 </html>
