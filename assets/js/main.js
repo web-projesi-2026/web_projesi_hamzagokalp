@@ -15,17 +15,42 @@ const hamburger = document.getElementById('hamburger');
 const navLinks  = document.getElementById('navLinks');
 if (hamburger && navLinks) {
   hamburger.addEventListener('click', () => {
-    navLinks.classList.toggle('open');
+    const isOpen = navLinks.classList.toggle('open');
+    hamburger.classList.toggle('active', isOpen);
+    hamburger.setAttribute('aria-expanded', isOpen);
     const s = hamburger.querySelectorAll('span');
-    const open = navLinks.classList.contains('open');
-    s[0].style.transform = open ? 'rotate(45deg) translate(5px,5px)' : '';
-    s[1].style.opacity   = open ? '0' : '';
-    s[2].style.transform = open ? 'rotate(-45deg) translate(5px,-5px)' : '';
+    s[0].style.transform = isOpen ? 'rotate(45deg) translate(5px,5px)' : '';
+    s[1].style.opacity   = isOpen ? '0' : '';
+    s[2].style.transform = isOpen ? 'rotate(-45deg) translate(5px,-5px)' : '';
   });
+  
+  // Menüyü kapat tıklama dışında
+  document.addEventListener('click', (e) => {
+    if (!hamburger.contains(e.target) && !navLinks.contains(e.target)) {
+      navLinks.classList.remove('open');
+      hamburger.classList.remove('active');
+      hamburger.setAttribute('aria-expanded', false);
+      hamburger.querySelectorAll('span').forEach(s => { s.style.transform=''; s.style.opacity=''; });
+    }
+  });
+  
+  // Link tıklandığında menüyü kapat
   navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
     navLinks.classList.remove('open');
+    hamburger.classList.remove('active');
+    hamburger.setAttribute('aria-expanded', false);
     hamburger.querySelectorAll('span').forEach(s => { s.style.transform=''; s.style.opacity=''; });
   }));
+  
+  // Escape tuşu ile menüyü kapat
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && navLinks.classList.contains('open')) {
+      navLinks.classList.remove('open');
+      hamburger.classList.remove('active');
+      hamburger.setAttribute('aria-expanded', false);
+      hamburger.querySelectorAll('span').forEach(s => { s.style.transform=''; s.style.opacity=''; });
+    }
+  });
 }
 
 /* ---------- TYPED TEXT ---------- */
