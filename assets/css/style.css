@@ -875,7 +875,6 @@ tr:hover td { background:rgba(16,185,129,0.03); }
 }
 .scroll-top.show { opacity: 1; pointer-events: auto; }
 .scroll-top:hover { transform: translateY(-3px); }
-
 /* ============================================================
    UTILS
    ============================================================ */
