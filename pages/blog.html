@@ -1,24 +1,39 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes" />
+  <meta name="description" content="Hamza Gökalp - Blog" />
+  <meta name="keywords" content="blog, yazılım, programlama, python, java, php" />
+  <meta name="theme-color" content="#10b981" />
   <title>Blog | Hamza Gökalp</title>
-  <link rel="stylesheet" href="../assets/css/style.css"/>
-  <link rel="stylesheet" href="../assets/css/responsive.css"/>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="../assets/css/style.css" />
+  <link rel="stylesheet" href="../assets/css/responsive.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
 </head>
 <body>
   <nav class="navbar" id="navbar">
     <div class="nav-container">
       <a href="../index.html" class="nav-logo">HG<span class="dot">.</span></a>
       <ul class="nav-links" id="navLinks">
-        <li><a href="../index.html">Ana Sayfa</a></li><li><a href="about.html">Hakkımda</a></li>
-        <li><a href="skills.html">Beceriler</a></li><li><a href="projects.html">Projeler</a></li>
-        <li><a href="blog.html" class="active">Blog</a></li><li><a href="services.html">Hizmetler</a></li><li><a href="contact.html">İletişim</a></li>
+        <li><a href="../index.html">Ana Sayfa</a></li>
+        <li><a href="about.html">Hakkımda</a></li>
+        <li><a href="skills.html">Beceriler</a></li>
+        <li><a href="projects.html">Projeler</a></li>
+        <li><a href="blog.html" class="active">Blog</a></li>
+        <li><a href="services.html">Hizmetler</a></li>
+        <li><a href="contact.html">İletişim</a></li>
       </ul>
-      <div class="nav-auth"><a href="login.html" class="nav-btn-login">Giriş Yap</a><a href="register.html" class="nav-btn-register">Kayıt Ol</a></div>
-      <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+      <div class="nav-auth">
+        <a href="login.html" class="nav-btn-login">Giriş Yap</a>
+        <a href="register.html" class="nav-btn-register">Kayıt Ol</a>
+      </div>
+      <button class="hamburger" id="hamburger" aria-label="Menüyü aç/kapat" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
     </div>
   </nav>
 
@@ -38,7 +53,10 @@
         <div class="blog-card">
           <div class="blog-thumb blog-thumb-1">🐍<span class="blog-cat">Python</span></div>
           <div class="blog-body">
-            <div class="blog-meta"><span><i class="fas fa-calendar"></i> 15 Mart 2025</span><span><i class="fas fa-clock"></i> 5 dk okuma</span></div>
+            <div class="blog-meta">
+              <span><i class="fas fa-calendar"></i> 15 Mart 2025</span>
+              <span><i class="fas fa-clock"></i> 5 dk okuma</span>
+            </div>
             <div class="blog-title">Python ile Web Scraping: BeautifulSoup Rehberi</div>
             <p class="blog-excerpt">Web'den veri toplamak için requests ve BeautifulSoup kütüphanelerini kullanmayı anlattım.</p>
             <a href="#" class="blog-read">Devamını Oku <i class="fas fa-arrow-right"></i></a>
@@ -48,7 +66,10 @@
         <div class="blog-card">
           <div class="blog-thumb blog-thumb-2">🗄️<span class="blog-cat">Veritabanı</span></div>
           <div class="blog-body">
-            <div class="blog-meta"><span><i class="fas fa-calendar"></i> 2 Mart 2025</span><span><i class="fas fa-clock"></i> 7 dk okuma</span></div>
+            <div class="blog-meta">
+              <span><i class="fas fa-calendar"></i> 2 Mart 2025</span>
+              <span><i class="fas fa-clock"></i> 7 dk okuma</span>
+            </div>
             <div class="blog-title">MySQL'de JOIN Türleri ve Ne Zaman Kullanılır?</div>
             <p class="blog-excerpt">INNER, LEFT, RIGHT ve FULL JOIN arasındaki farkları gerçek örneklerle anlattım.</p>
             <a href="#" class="blog-read">Devamını Oku <i class="fas fa-arrow-right"></i></a>
@@ -58,7 +79,10 @@
         <div class="blog-card">
           <div class="blog-thumb blog-thumb-3">⚙️<span class="blog-cat">PHP</span></div>
           <div class="blog-body">
-            <div class="blog-meta"><span><i class="fas fa-calendar"></i> 18 Şubat 2025</span><span><i class="fas fa-clock"></i> 6 dk okuma</span></div>
+            <div class="blog-meta">
+              <span><i class="fas fa-calendar"></i> 18 Şubat 2025</span>
+              <span><i class="fas fa-clock"></i> 6 dk okuma</span>
+            </div>
             <div class="blog-title">PHP'de Session ve Cookie Güvenliği</div>
             <p class="blog-excerpt">Oturum yönetiminde yapılan yaygın hatalar ve güvenli session kullanımı için ipuçları.</p>
             <a href="#" class="blog-read">Devamını Oku <i class="fas fa-arrow-right"></i></a>
@@ -68,7 +92,10 @@
         <div class="blog-card">
           <div class="blog-thumb blog-thumb-4">☕<span class="blog-cat">Java</span></div>
           <div class="blog-body">
-            <div class="blog-meta"><span><i class="fas fa-calendar"></i> 5 Şubat 2025</span><span><i class="fas fa-clock"></i> 8 dk okuma</span></div>
+            <div class="blog-meta">
+              <span><i class="fas fa-calendar"></i> 5 Şubat 2025</span>
+              <span><i class="fas fa-clock"></i> 8 dk okuma</span>
+            </div>
             <div class="blog-title">Java'da OOP: Kalıtım ve Polimorfizm</div>
             <p class="blog-excerpt">Nesne tabanlı programlamanın temel kavramları somut Java örnekleriyle açıklandı.</p>
             <a href="#" class="blog-read">Devamını Oku <i class="fas fa-arrow-right"></i></a>
@@ -78,7 +105,10 @@
         <div class="blog-card">
           <div class="blog-thumb blog-thumb-5">🌿<span class="blog-cat">Git</span></div>
           <div class="blog-body">
-            <div class="blog-meta"><span><i class="fas fa-calendar"></i> 20 Ocak 2025</span><span><i class="fas fa-clock"></i> 4 dk okuma</span></div>
+            <div class="blog-meta">
+              <span><i class="fas fa-calendar"></i> 20 Ocak 2025</span>
+              <span><i class="fas fa-clock"></i> 4 dk okuma</span>
+            </div>
             <div class="blog-title">Git Branch Stratejisi: Feature Branch Workflow</div>
             <p class="blog-excerpt">Takım projelerinde düzenli bir git akışı nasıl kurulur? Adım adım anlattım.</p>
             <a href="#" class="blog-read">Devamını Oku <i class="fas fa-arrow-right"></i></a>
@@ -88,7 +118,10 @@
         <div class="blog-card">
           <div class="blog-thumb blog-thumb-6">🔒<span class="blog-cat">Güvenlik</span></div>
           <div class="blog-body">
-            <div class="blog-meta"><span><i class="fas fa-calendar"></i> 8 Ocak 2025</span><span><i class="fas fa-clock"></i> 5 dk okuma</span></div>
+            <div class="blog-meta">
+              <span><i class="fas fa-calendar"></i> 8 Ocak 2025</span>
+              <span><i class="fas fa-clock"></i> 5 dk okuma</span>
+            </div>
             <div class="blog-title">SQL Injection Nedir ve Nasıl Önlenir?</div>
             <p class="blog-excerpt">En yaygın web açıklarından biri olan SQL Injection saldırısı ve PDO ile korunma yolları.</p>
             <a href="#" class="blog-read">Devamını Oku <i class="fas fa-arrow-right"></i></a>
@@ -99,8 +132,14 @@
     </div>
   </section>
 
-  <footer class="footer"><div class="container"><p>© 2025 <strong>Hamza Gökalp</strong>. Tüm hakları saklıdır.</p></div></footer>
-  <button class="scroll-top" id="scrollTop"><i class="fas fa-chevron-up"></i></button>
+  <footer class="footer">
+    <div class="container">
+      <p>© 2025 <strong>Hamza Gökalp</strong>. Tüm hakları saklıdır.</p>
+      <p class="footer-sub">Sevgiyle kodlandı <i class="fas fa-heart"></i></p>
+    </div>
+  </footer>
+  
+  <button class="scroll-top" id="scrollTop" aria-label="Sayfanın başına git"><i class="fas fa-chevron-up"></i></button>
   <script src="../assets/js/main.js"></script>
 </body>
 </html>
