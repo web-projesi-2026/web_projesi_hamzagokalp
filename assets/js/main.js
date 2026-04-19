@@ -89,6 +89,55 @@ if (scrollBtn) {
   scrollBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 }
 
+/* ---------- DARK MODE TOGGLE ---------- */
+(function () {
+  const darkModeToggle = document.getElementById('darkModeToggle');
+  if (!darkModeToggle) return;
+  
+  // LocalStorage'dan tema tercihini yükle
+  const savedTheme = localStorage.getItem('theme') || 'dark';
+  document.documentElement.setAttribute('data-theme', savedTheme);
+  
+  // Toggle butonunu güncelle
+  const updateToggleIcon = () => {
+    const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+    darkModeToggle.innerHTML = isDark ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+  };
+  updateToggleIcon();
+  
+  // Toggle click event
+  darkModeToggle.addEventListener('click', () => {
+    const currentTheme = document.documentElement.getAttribute('data-theme');
+    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', newTheme);
+    localStorage.setItem('theme', newTheme);
+    updateToggleIcon();
+  });
+})();
+
+/* ---------- SCROLL TO TOP BUTTON ---------- */
+(function () {
+  const scrollTopBtn = document.getElementById('scrollTopBtn');
+  if (!scrollTopBtn) return;
+  
+  // Scroll event - butonu göster/gizle
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 300) {
+      scrollTopBtn.classList.add('show');
+    } else {
+      scrollTopBtn.classList.remove('show');
+    }
+  });
+  
+  // Click event - yukarı scroll et
+  scrollTopBtn.addEventListener('click', () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  });
+})();
+
 /* ---------- NAVBAR: Oturum Durumu ---------- */
 (function () {
   const navAuth = document.querySelector('.nav-auth');
