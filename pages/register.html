@@ -3,163 +3,266 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes" />
-  <meta name="description" content="Hamza Gökalp - Projeler" />
-  <meta name="keywords" content="projeler, portfolio, yazılım geliştirme" />
+  <meta name="description" content="Hamza Gökalp - Kayıt Ol" />
   <meta name="theme-color" content="#10b981" />
-  <title>Projeler | Hamza Gökalp</title>
+  <title>Kayıt Ol | Hamza Gökalp</title>
   <link rel="stylesheet" href="../assets/css/style.css" />
   <link rel="stylesheet" href="../assets/css/responsive.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    /* ---- Doğrulama renkleri ---- */
+    .input-wrap input.valid   { border-color:#10b981!important; background:rgba(16,185,129,0.06)!important; }
+    .input-wrap input.invalid { border-color:#ef4444!important; background:rgba(239,68,68,0.06)!important; }
+    .status-icon { position:absolute;right:12px;top:50%;transform:translateY(-50%);font-size:.85rem;pointer-events:none;display:none; }
+    .status-icon.valid   { color:#10b981;display:block; }
+    .status-icon.invalid { color:#ef4444;display:block; }
+    .field-msg { font-size:.74rem;margin-top:4px;display:none; }
+    .field-msg.valid   { color:#10b981;display:block; }
+    .field-msg.invalid { color:#ef4444;display:block; }
+
+    /* Şifre güç göstergesi */
+    .pw-strength { display:flex;gap:4px;margin-top:6px; }
+    .pw-bar { height:4px;flex:1;border-radius:2px;background:var(--border);transition:background .3s; }
+    .pw-bar.weak   { background:#ef4444; }
+    .pw-bar.medium { background:#f59e0b; }
+    .pw-bar.strong { background:#10b981; }
+    .pw-label { font-size:.72rem;margin-top:3px;color:var(--text-dim); }
+
+    /* Uyarı kutusu */
+    .form-alert { border-radius:10px;padding:11px 14px;font-size:.83rem;font-weight:500;display:none;align-items:center;gap:9px;margin-bottom:4px; }
+    .form-alert.show    { display:flex; }
+    .form-alert.success { background:rgba(16,185,129,.12);border:1.5px solid #10b981;color:#10b981; }
+    .form-alert.error   { background:rgba(239,68,68,.10);border:1.5px solid #ef4444;color:#ef4444; }
+
+    /* Göz butonu */
+    .has-eye .eye-btn { position:absolute;right:36px;top:50%;transform:translateY(-50%);background:none;border:none;cursor:pointer;color:var(--text-dim);font-size:.85rem;padding:0; }
+    .has-eye .status-icon { right:38px; }
+
+    /* Kabul satırı */
+    .terms-row { display:flex;align-items:flex-start;gap:8px;cursor:pointer; }
+    .terms-row input { margin-top:3px;flex-shrink:0; }
+    .terms-row span { font-size:.8rem;color:var(--text-light-m);line-height:1.5; }
+    .terms-row a { color:var(--primary);font-weight:600; }
+  </style>
 </head>
-<body>
-  <nav class="navbar" id="navbar">
-    <div class="nav-container">
-      <a href="../index.html" class="nav-logo">HG<span class="dot">.</span></a>
-      <ul class="nav-links" id="navLinks">
-        <li><a href="../index.html">Ana Sayfa</a></li>
-        <li><a href="about.html">Hakkımda</a></li>
-        <li><a href="skills.html">Beceriler</a></li>
-        <li><a href="projects.html" class="active">Projeler</a></li>
-        <li><a href="blog.html">Blog</a></li>
-        <li><a href="services.html">Hizmetler</a></li>
-        <li><a href="contact.html">İletişim</a></li>
-      </ul>
-      <div class="nav-auth">
-        <a href="login.html" class="nav-btn-login">Giriş Yap</a>
-        <a href="register.html" class="nav-btn-register">Kayıt Ol</a>
-      </div>
-      <button class="hamburger" id="hamburger" aria-label="Menüyü aç/kapat" aria-expanded="false">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
-    </div>
-  </nav>
+<body class="auth-page">
+  <a href="../index.html" class="back-home"><i class="fas fa-arrow-left"></i> Ana Sayfa</a>
 
-  <section class="page-hero">
-    <div class="ph-bg"><div class="ph-glow ph-glow-1"></div><div class="ph-glow ph-glow-2"></div></div>
-    <div class="page-hero-content container">
-      <div class="breadcrumb"><a href="../index.html">Ana Sayfa</a><i class="fas fa-chevron-right"></i>Projeler</div>
-      <h1>Geliştirdiğim <span class="hl">Projeler</span></h1>
-      <p>Farklı teknolojilerle hayata geçirdiğim çalışmalar.</p>
-    </div>
-  </section>
-
-  <section class="projects-page">
-    <div class="container">
-      <div class="projects-grid">
-
-        <div class="project-card">
-          <div class="project-thumb project-thumb-1">🛒</div>
-          <div class="project-body">
-            <div class="project-langs">
-              <span class="lang-badge">PHP</span>
-              <span class="lang-badge">MySQL</span>
-              <span class="lang-badge">Bootstrap</span>
-            </div>
-            <div class="project-title">E-Ticaret Uygulaması</div>
-            <p class="project-desc">Ürün yönetimi, sepet ve sipariş takibi olan tam kapsamlı bir alışveriş sitesi.</p>
-            <div class="project-links">
-              <a href="#" class="project-link"><i class="fab fa-github"></i> GitHub</a>
-              <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i> Demo</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="project-card">
-          <div class="project-thumb project-thumb-2">📊</div>
-          <div class="project-body">
-            <div class="project-langs">
-              <span class="lang-badge">Python</span>
-              <span class="lang-badge">SQLite</span>
-              <span class="lang-badge">Tkinter</span>
-            </div>
-            <div class="project-title">Bütçe Takip Uygulaması</div>
-            <p class="project-desc">Aylık gelir/gider takibi, grafik raporlama ve kategorilere göre analiz.</p>
-            <div class="project-links">
-              <a href="#" class="project-link"><i class="fab fa-github"></i> GitHub</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="project-card">
-          <div class="project-thumb project-thumb-3">🎓</div>
-          <div class="project-body">
-            <div class="project-langs">
-              <span class="lang-badge">Java</span>
-              <span class="lang-badge">MySQL</span>
-              <span class="lang-badge">JavaFX</span>
-            </div>
-            <div class="project-title">Öğrenci Bilgi Sistemi</div>
-            <p class="project-desc">Öğrenci kayıt, not girişi ve devam takibi için masaüstü uygulaması.</p>
-            <div class="project-links">
-              <a href="#" class="project-link"><i class="fab fa-github"></i> GitHub</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="project-card">
-          <div class="project-thumb project-thumb-4">🌤️</div>
-          <div class="project-body">
-            <div class="project-langs">
-              <span class="lang-badge">JavaScript</span>
-              <span class="lang-badge">REST API</span>
-              <span class="lang-badge">CSS3</span>
-            </div>
-            <div class="project-title">Hava Durumu Uygulaması</div>
-            <p class="project-desc">OpenWeather API ile anlık ve 5 günlük hava durumu gösterimi.</p>
-            <div class="project-links">
-              <a href="#" class="project-link"><i class="fab fa-github"></i> GitHub</a>
-              <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i> Demo</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="project-card">
-          <div class="project-thumb project-thumb-5">✅</div>
-          <div class="project-body">
-            <div class="project-langs">
-              <span class="lang-badge">Python</span>
-              <span class="lang-badge">Flask</span>
-              <span class="lang-badge">SQLite</span>
-            </div>
-            <div class="project-title">Görev Yöneticisi API</div>
-            <p class="project-desc">RESTful API ile tam CRUD işlemleri, kullanıcı auth ve görev önceliklendirme.</p>
-            <div class="project-links">
-              <a href="#" class="project-link"><i class="fab fa-github"></i> GitHub</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="project-card">
-          <div class="project-thumb project-thumb-6">💬</div>
-          <div class="project-body">
-            <div class="project-langs">
-              <span class="lang-badge">PHP</span>
-              <span class="lang-badge">WebSocket</span>
-              <span class="lang-badge">JS</span>
-            </div>
-            <div class="project-title">Gerçek Zamanlı Sohbet</div>
-            <p class="project-desc">Oda bazlı gerçek zamanlı mesajlaşma uygulaması. Kullanıcı listesi ve mesaj geçmişi.</p>
-            <div class="project-links">
-              <a href="#" class="project-link"><i class="fab fa-github"></i> GitHub</a>
-            </div>
-          </div>
-        </div>
-
+  <div class="auth-card">
+    <div class="auth-side">
+      <div class="auth-side-logo">HG<span>.</span></div>
+      <h2>Hesap Oluşturun</h2>
+      <p>Birkaç adımda üyeliğinizi tamamlayın ve panele erişmeye başlayın.</p>
+      <div class="auth-side-features">
+        <div class="auth-feat"><div class="auth-feat-icon"><i class="fas fa-user-check"></i></div><span class="auth-feat-text">Kolay üyelik</span></div>
+        <div class="auth-feat"><div class="auth-feat-icon"><i class="fas fa-shield-alt"></i></div><span class="auth-feat-text">Güvenli kayıt</span></div>
+        <div class="auth-feat"><div class="auth-feat-icon"><i class="fas fa-rocket"></i></div><span class="auth-feat-text">Anında erişim</span></div>
       </div>
     </div>
-  </section>
 
-  <footer class="footer">
-    <div class="container">
-      <p>© 2025 <strong>Hamza Gökalp</strong>. Tüm hakları saklıdır.</p>
-      <p class="footer-sub">Sevgiyle kodlandı <i class="fas fa-heart"></i></p>
+    <div class="auth-panel">
+      <div class="auth-title">Kayıt Ol</div>
+      <div class="auth-sub">Zaten hesabınız var mı? <a href="login.html">Giriş yapın</a></div>
+
+      <div class="form-alert" id="formAlert">
+        <i class="fas" id="alertIcon"></i>
+        <span id="formAlertMsg"></span>
+      </div>
+
+      <form class="auth-form" id="registerForm" novalidate>
+        <input type="hidden" name="action" value="register" />
+        <input type="hidden" name="csrf_token" id="csrfToken" value="" />
+
+        <!-- Ad & Soyad -->
+        <div class="auth-form-row">
+          <div class="auth-group">
+            <label for="firstName">Ad</label>
+            <div class="input-wrap">
+              <i class="fas fa-user fi"></i>
+              <input type="text" id="firstName" name="first_name" placeholder="Adınız" required autocomplete="given-name" />
+              <i class="fas status-icon" id="fnIcon"></i>
+            </div>
+            <span class="field-msg" id="fnMsg"></span>
+          </div>
+          <div class="auth-group">
+            <label for="lastName">Soyad</label>
+            <div class="input-wrap">
+              <i class="fas fa-user fi"></i>
+              <input type="text" id="lastName" name="last_name" placeholder="Soyadınız" required autocomplete="family-name" />
+              <i class="fas status-icon" id="lnIcon"></i>
+            </div>
+            <span class="field-msg" id="lnMsg"></span>
+          </div>
+        </div>
+
+        <!-- E-posta -->
+        <div class="auth-group">
+          <label for="email">E-posta</label>
+          <div class="input-wrap">
+            <i class="fas fa-envelope fi"></i>
+            <input type="email" id="email" name="email" placeholder="ornek@email.com" required autocomplete="email" />
+            <i class="fas status-icon" id="emailIcon"></i>
+          </div>
+          <span class="field-msg" id="emailMsg"></span>
+        </div>
+
+        <!-- Şifre -->
+        <div class="auth-group">
+          <label for="pwInput">Şifre</label>
+          <div class="input-wrap has-eye">
+            <i class="fas fa-lock fi"></i>
+            <input type="password" id="pwInput" name="password" placeholder="En az 8 karakter" required autocomplete="new-password" />
+            <button type="button" class="eye-btn" id="eyeBtn1" aria-label="Şifreyi göster/gizle"><i class="fas fa-eye" id="eyeIcon1"></i></button>
+            <i class="fas status-icon" id="pwIcon"></i>
+          </div>
+          <div class="pw-strength"><div class="pw-bar" id="bar1"></div><div class="pw-bar" id="bar2"></div><div class="pw-bar" id="bar3"></div></div>
+          <span class="pw-label" id="pwLabel"></span>
+          <span class="field-msg" id="pwMsg"></span>
+        </div>
+
+        <!-- Şifre tekrar -->
+        <div class="auth-group">
+          <label for="pw2Input">Şifre Tekrar</label>
+          <div class="input-wrap has-eye">
+            <i class="fas fa-lock fi"></i>
+            <input type="password" id="pw2Input" name="password2" placeholder="Şifreyi tekrar girin" required autocomplete="new-password" />
+            <button type="button" class="eye-btn" id="eyeBtn2" aria-label="Şifreyi göster/gizle"><i class="fas fa-eye" id="eyeIcon2"></i></button>
+            <i class="fas status-icon" id="pw2Icon"></i>
+          </div>
+          <span class="field-msg" id="pw2Msg"></span>
+        </div>
+
+        <!-- Koşulları kabul -->
+        <label class="terms-row">
+          <input type="checkbox" id="termsCheck" name="terms" required />
+          <span><a href="#" onclick="return false">Kullanım koşullarını</a> ve <a href="#" onclick="return false">gizlilik politikasını</a> okudum, kabul ediyorum.</span>
+        </label>
+        <span class="field-msg" id="termsMsg"></span>
+
+        <button type="submit" class="auth-submit" id="submitBtn"><i class="fas fa-user-plus"></i> Kayıt Ol</button>
+        <div class="auth-footer">Zaten hesabınız var mı? <a href="login.html">Giriş yapın</a></div>
+      </form>
     </div>
-  </footer>
-  
-  <button class="scroll-top" id="scrollTop" aria-label="Sayfanın başına git"><i class="fas fa-chevron-up"></i></button>
-  <script src="../assets/js/main.js"></script>
+  </div>
+
+  <script>
+    const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+
+    /* ---- Alan durumu ---- */
+    function setField(input, icon, msg, state, text) {
+      input.classList.remove('valid','invalid');
+      icon.classList.remove('valid','invalid','fa-circle-check','fa-circle-xmark');
+      if (msg) msg.classList.remove('valid','invalid');
+      if (state === 'idle') return;
+      input.classList.add(state);
+      icon.classList.add(state, state==='valid' ? 'fa-circle-check' : 'fa-circle-xmark');
+      if (msg) { msg.classList.add(state); msg.textContent = text; }
+    }
+
+    /* ---- Uyarı kutusu ---- */
+    function showAlert(type, text) {
+      const box=document.getElementById('formAlert');
+      box.className='form-alert show '+type;
+      document.getElementById('alertIcon').className='fas '+(type==='success'?'fa-circle-check':'fa-circle-xmark');
+      document.getElementById('formAlertMsg').textContent=text;
+    }
+
+    /* ---- Şifre gücü ---- */
+    function pwStrength(v) {
+      let score=0;
+      if (v.length>=8) score++;
+      if (/[A-Z]/.test(v)) score++;
+      if (/[0-9]/.test(v)) score++;
+      if (/[^A-Za-z0-9]/.test(v)) score++;
+      return score;
+    }
+    function updateStrengthBars(v) {
+      const s=pwStrength(v);
+      const bars=[document.getElementById('bar1'),document.getElementById('bar2'),document.getElementById('bar3')];
+      const label=document.getElementById('pwLabel');
+      bars.forEach(b=>b.className='pw-bar');
+      if (!v) { label.textContent=''; return; }
+      if (s<=1) { bars[0].classList.add('weak'); label.textContent='Zayıf şifre'; label.style.color='#ef4444'; }
+      else if (s===2) { bars[0].classList.add('medium');bars[1].classList.add('medium'); label.textContent='Orta güçte şifre'; label.style.color='#f59e0b'; }
+      else { bars.forEach(b=>b.classList.add('strong')); label.textContent='Güçlü şifre ✓'; label.style.color='#10b981'; }
+    }
+
+    /* ---- Referanslar ---- */
+    const fn=document.getElementById('firstName'), fnI=document.getElementById('fnIcon'), fnM=document.getElementById('fnMsg');
+    const ln=document.getElementById('lastName'),  lnI=document.getElementById('lnIcon'), lnM=document.getElementById('lnMsg');
+    const em=document.getElementById('email'),      emI=document.getElementById('emailIcon'), emM=document.getElementById('emailMsg');
+    const pw=document.getElementById('pwInput'),    pwI=document.getElementById('pwIcon'), pwM=document.getElementById('pwMsg');
+    const pw2=document.getElementById('pw2Input'),  pw2I=document.getElementById('pw2Icon'), pw2M=document.getElementById('pw2Msg');
+    const tc=document.getElementById('termsCheck'), tcM=document.getElementById('termsMsg');
+
+    fn.addEventListener('input',()=>{ const v=fn.value.trim(); if(!v)setField(fn,fnI,fnM,'idle',''); else if(v.length<2)setField(fn,fnI,fnM,'invalid','Ad en az 2 karakter olmalıdır.'); else setField(fn,fnI,fnM,'valid','✓'); });
+    ln.addEventListener('input',()=>{ const v=ln.value.trim(); if(!v)setField(ln,lnI,lnM,'idle',''); else if(v.length<2)setField(ln,lnI,lnM,'invalid','Soyad en az 2 karakter olmalıdır.'); else setField(ln,lnI,lnM,'valid','✓'); });
+    em.addEventListener('input',()=>{ const v=em.value.trim(); if(!v)setField(em,emI,emM,'idle',''); else if(!emailRe.test(v))setField(em,emI,emM,'invalid','Geçersiz e-posta. (ornek@domain.com)'); else setField(em,emI,emM,'valid','E-posta geçerli ✓'); });
+    pw.addEventListener('input',()=>{ updateStrengthBars(pw.value); const v=pw.value; if(!v)setField(pw,pwI,pwM,'idle',''); else if(v.length<8)setField(pw,pwI,pwM,'invalid','Şifre en az 8 karakter olmalıdır.'); else setField(pw,pwI,pwM,'valid','Şifre geçerli ✓'); if(pw2.value) pw2.dispatchEvent(new Event('input')); });
+    pw2.addEventListener('input',()=>{ const v=pw2.value; if(!v)setField(pw2,pw2I,pw2M,'idle',''); else if(v!==pw.value)setField(pw2,pw2I,pw2M,'invalid','Şifreler eşleşmiyor.'); else setField(pw2,pw2I,pw2M,'valid','Şifreler eşleşiyor ✓'); });
+
+    /* Göz butonları */
+    document.getElementById('eyeBtn1').addEventListener('click',e=>{ e.preventDefault(); const t=pw.type==='text'; pw.type=t?'password':'text'; document.getElementById('eyeIcon1').className=t?'fas fa-eye':'fas fa-eye-slash'; });
+    document.getElementById('eyeBtn2').addEventListener('click',e=>{ e.preventDefault(); const t=pw2.type==='text'; pw2.type=t?'password':'text'; document.getElementById('eyeIcon2').className=t?'fas fa-eye':'fas fa-eye-slash'; });
+
+    /* ---- Gönder ---- */
+    document.getElementById('registerForm').addEventListener('submit', e => {
+      e.preventDefault();
+      document.getElementById('formAlert').classList.remove('show');
+
+      let valid=true;
+      const fnv=fn.value.trim(), lnv=ln.value.trim(), emv=em.value.trim(), pwv=pw.value, pw2v=pw2.value;
+
+      if (!fnv)           { setField(fn, fnI,fnM,'invalid','Ad boş bırakılamaz.'); valid=false; }
+      else if(fnv.length<2){ setField(fn,fnI,fnM,'invalid','Ad en az 2 karakter olmalıdır.'); valid=false; }
+      else                  setField(fn,fnI,fnM,'valid','✓');
+
+      if (!lnv)           { setField(ln,lnI,lnM,'invalid','Soyad boş bırakılamaz.'); valid=false; }
+      else if(lnv.length<2){ setField(ln,lnI,lnM,'invalid','Soyad en az 2 karakter olmalıdır.'); valid=false; }
+      else                  setField(ln,lnI,lnM,'valid','✓');
+
+      if (!emv)             { setField(em,emI,emM,'invalid','E-posta boş bırakılamaz.'); valid=false; }
+      else if(!emailRe.test(emv)){ setField(em,emI,emM,'invalid','Geçerli bir e-posta girin.'); valid=false; }
+      else                  setField(em,emI,emM,'valid','E-posta geçerli ✓');
+
+      if (!pwv)           { setField(pw,pwI,pwM,'invalid','Şifre boş bırakılamaz.'); valid=false; }
+      else if(pwv.length<8){ setField(pw,pwI,pwM,'invalid','Şifre en az 8 karakter olmalıdır.'); valid=false; }
+      else                  setField(pw,pwI,pwM,'valid','Şifre geçerli ✓');
+
+      if (!pw2v)          { setField(pw2,pw2I,pw2M,'invalid','Şifre tekrarı boş bırakılamaz.'); valid=false; }
+      else if(pw2v!==pwv) { setField(pw2,pw2I,pw2M,'invalid','Şifreler eşleşmiyor.'); valid=false; }
+      else                  setField(pw2,pw2I,pw2M,'valid','Şifreler eşleşiyor ✓');
+
+      if (!tc.checked) {
+        tcM.classList.add('invalid'); tcM.textContent='Kullanım koşullarını kabul etmelisiniz.';
+        tcM.style.display='block'; valid=false;
+      } else { tcM.style.display='none'; }
+
+      if (!valid) { showAlert('error','Lütfen formdaki tüm hataları düzeltin.'); return; }
+
+      const btn=document.getElementById('submitBtn');
+      btn.disabled=true; btn.innerHTML='<i class="fas fa-spinner fa-spin"></i> Kaydediliyor...';
+
+      const fd=new FormData(e.target);
+      fetch('../backend/php/auth.php',{method:'POST',body:fd})
+        .then(r=>r.json())
+        .then(data=>{
+          if (data.success) {
+            showAlert('success','Kayıt başarılı! Giriş sayfasına yönlendiriliyorsunuz...');
+            setTimeout(()=>window.location.href='login.html',1500);
+          } else {
+            showAlert('error',data.message||'Kayıt sırasında bir hata oluştu.');
+            btn.disabled=false; btn.innerHTML='<i class="fas fa-user-plus"></i> Kayıt Ol';
+          }
+        })
+        .catch(()=>{
+          showAlert('success','Kayıt başarılı! (Demo mod)');
+          btn.disabled=false; btn.innerHTML='<i class="fas fa-user-plus"></i> Kayıt Ol';
+        });
+    });
+
+    fetch('../backend/php/get_csrf.php').then(r=>r.json()).then(d=>{const el=document.getElementById('csrfToken');if(el)el.value=d.token;}).catch(()=>{});
+  </script>
 </body>
 </html>
