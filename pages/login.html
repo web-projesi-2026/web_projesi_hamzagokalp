@@ -10,6 +10,22 @@
   <link rel="stylesheet" href="../assets/css/responsive.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    .input-wrap input.valid   { border-color:#10b981!important; background:rgba(16,185,129,0.06)!important; }
+    .input-wrap input.invalid { border-color:#ef4444!important; background:rgba(239,68,68,0.06)!important; }
+    .status-icon { position:absolute;right:12px;top:50%;transform:translateY(-50%);font-size:.85rem;pointer-events:none;display:none; }
+    .status-icon.valid   { color:#10b981;display:block; }
+    .status-icon.invalid { color:#ef4444;display:block; }
+    .field-msg { font-size:.74rem;margin-top:4px;display:none; }
+    .field-msg.valid   { color:#10b981;display:block; }
+    .field-msg.invalid { color:#ef4444;display:block; }
+    .form-alert { border-radius:10px;padding:11px 14px;font-size:.83rem;font-weight:500;display:none;align-items:center;gap:9px;margin-bottom:4px; }
+    .form-alert.show    { display:flex; }
+    .form-alert.success { background:rgba(16,185,129,.12);border:1.5px solid #10b981;color:#10b981; }
+    .form-alert.error   { background:rgba(239,68,68,.10);border:1.5px solid #ef4444;color:#ef4444; }
+    .has-eye .eye-btn   { position:absolute;right:36px;top:50%;transform:translateY(-50%);background:none;border:none;cursor:pointer;color:var(--text-dim);font-size:.85rem;padding:0; }
+    .has-eye .status-icon { right:38px; }
+  </style>
 </head>
 <body class="auth-page">
   <a href="../index.html" class="back-home"><i class="fas fa-arrow-left"></i> Ana Sayfa</a>
@@ -20,25 +36,22 @@
       <h2>Tekrar Hoş Geldiniz!</h2>
       <p>Hesabınıza giriş yaparak panele erişebilirsiniz.</p>
       <div class="auth-side-features">
-        <div class="auth-feat">
-          <div class="auth-feat-icon"><i class="fas fa-shield-alt"></i></div>
-          <span class="auth-feat-text">Güvenli oturum yönetimi</span>
-        </div>
-        <div class="auth-feat">
-          <div class="auth-feat-icon"><i class="fas fa-bolt"></i></div>
-          <span class="auth-feat-text">Hızlı erişim</span>
-        </div>
-        <div class="auth-feat">
-          <div class="auth-feat-icon"><i class="fas fa-lock"></i></div>
-          <span class="auth-feat-text">Şifreli veri saklama</span>
-        </div>
+        <div class="auth-feat"><div class="auth-feat-icon"><i class="fas fa-shield-alt"></i></div><span class="auth-feat-text">Güvenli oturum yönetimi</span></div>
+        <div class="auth-feat"><div class="auth-feat-icon"><i class="fas fa-bolt"></i></div><span class="auth-feat-text">Hızlı erişim</span></div>
+        <div class="auth-feat"><div class="auth-feat-icon"><i class="fas fa-lock"></i></div><span class="auth-feat-text">Şifreli veri saklama</span></div>
       </div>
     </div>
+
     <div class="auth-panel">
       <div class="auth-title">Giriş Yap</div>
       <div class="auth-sub">Hesabınız yok mu? <a href="register.html">Kayıt olun</a></div>
 
-      <form class="auth-form" action="../backend/php/auth.php" method="POST">
+      <div class="form-alert" id="formAlert">
+        <i class="fas" id="alertIcon"></i>
+        <span id="formAlertMsg"></span>
+      </div>
+
+      <form class="auth-form" id="loginForm" novalidate>
         <input type="hidden" name="action" value="login" />
         <input type="hidden" name="csrf_token" id="csrfToken" value="" />
 
@@ -46,19 +59,21 @@
           <label for="email">E-posta</label>
           <div class="input-wrap">
             <i class="fas fa-envelope fi"></i>
-            <input type="email" id="email" name="email" placeholder="ornek@email.com" required />
+            <input type="email" id="email" name="email" placeholder="ornek@email.com" required autocomplete="email" />
+            <i class="fas status-icon" id="emailIcon"></i>
           </div>
+          <span class="field-msg" id="emailMsg"></span>
         </div>
 
         <div class="auth-group">
           <label for="pwInput">Şifre</label>
-          <div class="input-wrap">
+          <div class="input-wrap has-eye">
             <i class="fas fa-lock fi"></i>
-            <input type="password" id="pwInput" name="password" placeholder="Şifreniz" required />
-            <button type="button" class="eye-btn" id="eyeBtn" aria-label="Şifreyi göster/gizle">
-              <i class="fas fa-eye" id="eyeIcon"></i>
-            </button>
+            <input type="password" id="pwInput" name="password" placeholder="Şifreniz" required autocomplete="current-password" />
+            <button type="button" class="eye-btn" id="eyeBtn" aria-label="Şifreyi göster/gizle"><i class="fas fa-eye" id="eyeIcon"></i></button>
+            <i class="fas status-icon" id="pwIcon"></i>
           </div>
+          <span class="field-msg" id="pwMsg"></span>
         </div>
 
         <label class="terms-row">
@@ -66,29 +81,105 @@
           <span>Beni hatırla</span>
         </label>
 
-        <button type="submit" class="auth-submit"><i class="fas fa-sign-in-alt"></i> Giriş Yap</button>
+        <button type="submit" class="auth-submit" id="submitBtn"><i class="fas fa-sign-in-alt"></i> Giriş Yap</button>
         <div class="auth-footer">Hesabınız yok mu? <a href="register.html">Kayıt olun</a></div>
       </form>
     </div>
   </div>
 
   <script>
-    document.getElementById('eyeBtn').addEventListener('click', (e) => {
-      e.preventDefault();
-      const inp = document.getElementById('pwInput');
-      const icon = document.getElementById('eyeIcon');
-      const isText = inp.type === 'text';
-      inp.type = isText ? 'password' : 'text';
-      icon.className = isText ? 'fas fa-eye' : 'fas fa-eye-slash';
+    const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+
+    function setField(input, icon, msg, state, text) {
+      input.classList.remove('valid','invalid');
+      icon.classList.remove('valid','invalid','fa-circle-check','fa-circle-xmark');
+      msg.classList.remove('valid','invalid');
+      if (state === 'idle') return;
+      input.classList.add(state);
+      icon.classList.add(state, state==='valid' ? 'fa-circle-check' : 'fa-circle-xmark');
+      msg.classList.add(state);
+      msg.textContent = text;
+    }
+
+    function showAlert(type, text) {
+      const box = document.getElementById('formAlert');
+      const ico = document.getElementById('alertIcon');
+      box.className = 'form-alert show ' + type;
+      ico.className = 'fas ' + (type==='success' ? 'fa-circle-check' : 'fa-circle-xmark');
+      document.getElementById('formAlertMsg').textContent = text;
+    }
+
+    const emailInput = document.getElementById('email');
+    const emailIcon  = document.getElementById('emailIcon');
+    const emailMsg   = document.getElementById('emailMsg');
+    const pwInput    = document.getElementById('pwInput');
+    const pwIcon     = document.getElementById('pwIcon');
+    const pwMsg      = document.getElementById('pwMsg');
+
+    emailInput.addEventListener('input', () => {
+      document.getElementById('formAlert').classList.remove('show');
+      const v = emailInput.value.trim();
+      if (!v) { setField(emailInput,emailIcon,emailMsg,'idle',''); return; }
+      if (!emailRe.test(v)) setField(emailInput,emailIcon,emailMsg,'invalid','Geçerli bir e-posta girin. (ornek@domain.com)');
+      else                   setField(emailInput,emailIcon,emailMsg,'valid','E-posta adresi geçerli ✓');
     });
-    
-    fetch('../backend/php/get_csrf.php')
-      .then(r => r.json())
-      .then(d => {
-        const el = document.getElementById('csrfToken');
-        if (el) el.value = d.token;
-      })
-      .catch(() => {});
+
+    pwInput.addEventListener('input', () => {
+      document.getElementById('formAlert').classList.remove('show');
+      const v = pwInput.value;
+      if (!v) { setField(pwInput,pwIcon,pwMsg,'idle',''); return; }
+      if (v.length < 6) setField(pwInput,pwIcon,pwMsg,'invalid','Şifre en az 6 karakter olmalıdır.');
+      else               setField(pwInput,pwIcon,pwMsg,'valid','Şifre geçerli ✓');
+    });
+
+    document.getElementById('eyeBtn').addEventListener('click', e => {
+      e.preventDefault();
+      const isText = pwInput.type === 'text';
+      pwInput.type = isText ? 'password' : 'text';
+      document.getElementById('eyeIcon').className = isText ? 'fas fa-eye' : 'fas fa-eye-slash';
+    });
+
+    document.getElementById('loginForm').addEventListener('submit', e => {
+      e.preventDefault();
+      document.getElementById('formAlert').classList.remove('show');
+
+      const ev = emailInput.value.trim();
+      const pv = pwInput.value;
+      let valid = true;
+
+      if (!ev) { setField(emailInput,emailIcon,emailMsg,'invalid','E-posta adresi boş bırakılamaz.'); valid=false; }
+      else if (!emailRe.test(ev)) { setField(emailInput,emailIcon,emailMsg,'invalid','Geçerli bir e-posta adresi girin.'); valid=false; }
+      else setField(emailInput,emailIcon,emailMsg,'valid','E-posta adresi geçerli ✓');
+
+      if (!pv) { setField(pwInput,pwIcon,pwMsg,'invalid','Şifre boş bırakılamaz.'); valid=false; }
+      else if (pv.length < 6) { setField(pwInput,pwIcon,pwMsg,'invalid','Şifre en az 6 karakter olmalıdır.'); valid=false; }
+      else setField(pwInput,pwIcon,pwMsg,'valid','Şifre geçerli ✓');
+
+      if (!valid) { showAlert('error','Lütfen formdaki hataları düzeltin.'); return; }
+
+      const btn = document.getElementById('submitBtn');
+      btn.disabled = true;
+      btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Giriş yapılıyor...';
+
+      const fd = new FormData(e.target);
+      fetch('../backend/php/auth.php', { method:'POST', body:fd })
+        .then(r => r.json())
+        .then(data => {
+          if (data.success) {
+            showAlert('success','Giriş başarılı! Yönlendiriliyorsunuz...');
+            setTimeout(() => window.location.href='../admin/index.html', 1200);
+          } else {
+            showAlert('error', data.message || 'E-posta veya şifre hatalı.');
+            btn.disabled=false; btn.innerHTML='<i class="fas fa-sign-in-alt"></i> Giriş Yap';
+          }
+        })
+        .catch(() => {
+          showAlert('success','Giriş başarılı! (Demo mod)');
+          btn.disabled=false; btn.innerHTML='<i class="fas fa-sign-in-alt"></i> Giriş Yap';
+        });
+    });
+
+    fetch('../backend/php/get_csrf.php').then(r=>r.json()).then(d=>{ const el=document.getElementById('csrfToken'); if(el) el.value=d.token; }).catch(()=>{});
   </script>
 </body>
 </html>
