@@ -4,13 +4,84 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes" />
   <meta name="description" content="Hamza Gökalp - Hizmetler" />
-  <meta name="keywords" content="hizmetler, web geliştirme, e-ticaret, api" />
   <meta name="theme-color" content="#10b981" />
   <title>Hizmetler | Hamza Gökalp</title>
   <link rel="stylesheet" href="../assets/css/style.css" />
   <link rel="stylesheet" href="../assets/css/responsive.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    /* ── FAV BAR ── */
+    .fav-bar{background:var(--dark-surface);border-bottom:1px solid var(--border);padding:13px 0}
+    .fav-bar .container{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+    .fav-info{display:flex;align-items:center;gap:9px;font-size:.85rem;color:var(--text-dim)}
+    .fav-info i{color:#f59e0b}
+    .fav-count{background:linear-gradient(135deg,var(--primary),var(--secondary));color:#fff;font-size:.72rem;font-weight:700;padding:2px 9px;border-radius:50px}
+    .fav-actions{display:flex;gap:9px}
+    .btn-favs{display:inline-flex;align-items:center;gap:6px;padding:6px 15px;border-radius:50px;font-size:.78rem;font-weight:600;background:rgba(16,185,129,.12);border:1px solid rgba(16,185,129,.3);color:var(--primary-l);cursor:pointer;transition:.3s}
+    .btn-favs:hover{background:rgba(16,185,129,.22)}
+    .btn-favs.on{background:var(--primary);color:#fff;border-color:var(--primary)}
+    .btn-clr{display:inline-flex;align-items:center;gap:6px;padding:6px 13px;border-radius:50px;font-size:.76rem;background:transparent;border:1px solid rgba(239,68,68,.3);color:#f87171;cursor:pointer;transition:.3s}
+    .btn-clr:hover{background:rgba(239,68,68,.1)}
+
+    /* ── FİLTRE ── */
+    .filter-bar{background:var(--dark-bg);padding:16px 0;border-bottom:1px solid var(--border)}
+    .filter-bar .container{display:flex;align-items:center;gap:9px;flex-wrap:wrap}
+    .fl{font-size:.78rem;color:var(--text-dim);margin-right:4px}
+    .fbtn{padding:5px 15px;border-radius:50px;font-size:.78rem;font-weight:600;background:transparent;border:1px solid var(--border);color:var(--text-dim);cursor:pointer;transition:.3s}
+    .fbtn:hover{border-color:var(--primary);color:var(--primary-l)}
+    .fbtn.on{background:var(--primary);border-color:var(--primary);color:#fff}
+
+    /* ── SKELETON ── */
+    .sk{background:var(--light-card);border:1px solid var(--border-light);border-radius:var(--radius);padding:32px 26px;display:flex;flex-direction:column;gap:13px;animation:pulse 1.4s ease-in-out infinite}
+    @keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+    .sk-i{width:60px;height:60px;border-radius:14px;background:rgba(16,185,129,.12)}
+    .sk-l{height:12px;border-radius:6px;background:rgba(16,185,129,.1)}
+    .sk-l.s{width:50%}.sk-l.m{width:75%}.sk-l.f{width:100%}
+
+    /* ── CARD ── */
+    .service-card{background:var(--light-card);border:1px solid var(--border-light);border-radius:var(--radius);padding:32px 26px;display:flex;flex-direction:column;gap:14px;position:relative;transition:box-shadow .3s,border-color .3s,transform .3s}
+    .service-card:hover{box-shadow:0 18px 48px rgba(16,185,129,.15);border-color:var(--border-m);transform:translateY(-5px)}
+    .service-card.fav{border-color:rgba(245,158,11,.4);box-shadow:0 4px 18px rgba(245,158,11,.1)}
+    .service-card.hidden{display:none}
+    .service-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;border-radius:var(--radius) var(--radius) 0 0;background:linear-gradient(90deg,var(--primary),var(--secondary));transform:scaleX(0);transform-origin:left;transition:transform .4s}
+    .service-card:hover::before{transform:scaleX(1)}
+
+    .card-badge{position:absolute;top:14px;right:14px;padding:3px 10px;border-radius:50px;font-size:.68rem;font-weight:700;background:linear-gradient(135deg,var(--primary),var(--secondary));color:#fff}
+    .service-icon{width:62px;height:62px;border-radius:14px;background:rgba(16,185,129,.1);border:1px solid rgba(16,185,129,.18);display:flex;align-items:center;justify-content:center;font-size:1.5rem;color:var(--primary);transition:.3s;flex-shrink:0}
+    .service-card:hover .service-icon{background:var(--primary);color:#fff;box-shadow:0 6px 20px rgba(16,185,129,.35)}
+    .service-title{font-size:1.05rem;font-weight:700;color:var(--text-light)}
+    .service-desc{font-size:.83rem;color:var(--text-light-m);line-height:1.7;flex:1}
+    .service-items{display:flex;flex-direction:column;gap:7px}
+    .service-item{display:flex;align-items:center;gap:8px;font-size:.8rem;color:var(--text-light-m)}
+    .service-item i{color:var(--primary);font-size:.65rem;flex-shrink:0}
+
+    /* kart alt aksiyonlar */
+    .card-foot{display:flex;align-items:center;gap:10px;margin-top:4px;border-top:1px solid var(--border-light);padding-top:14px}
+    .card-link{display:inline-flex;align-items:center;gap:7px;font-size:.82rem;font-weight:600;color:var(--primary);flex:1;transition:gap .3s}
+    .service-card:hover .card-link{gap:11px}
+    .card-link i{transition:.3s}
+    .btn-fav{width:36px;height:36px;border-radius:50%;border:1px solid var(--border-light);background:transparent;display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--text-dim);font-size:.9rem;flex-shrink:0;transition:.3s}
+    .btn-fav:hover{border-color:#f59e0b;color:#f59e0b;transform:scale(1.12)}
+    .btn-fav.on{background:rgba(245,158,11,.12);border-color:#f59e0b;color:#f59e0b}
+
+    /* ── BOŞ DURUM ── */
+    .empty-state{grid-column:1/-1;text-align:center;padding:60px 20px;display:none}
+    .empty-state i{font-size:2.8rem;color:var(--text-dim);display:block;margin-bottom:14px}
+    .empty-state h3{color:var(--text-light);margin-bottom:8px}
+    .empty-state p{color:var(--text-light-m);font-size:.86rem}
+    .empty-state.show{display:block}
+
+    /* ── TOAST ── */
+    .toast-wrap{position:fixed;bottom:26px;right:26px;z-index:9999;display:flex;flex-direction:column;gap:9px;pointer-events:none}
+    .toast{display:flex;align-items:center;gap:10px;padding:11px 17px;border-radius:12px;background:var(--dark-card);border:1px solid var(--border);color:var(--text);font-size:.83rem;font-weight:500;box-shadow:0 8px 28px rgba(0,0,0,.4);min-width:230px;animation:tIn .3s ease}
+    .toast.out{animation:tOut .3s ease forwards}
+    @keyframes tIn{from{opacity:0;transform:translateX(26px)}to{opacity:1;transform:none}}
+    @keyframes tOut{to{opacity:0;transform:translateX(26px)}}
+    .toast.add .ti{color:#f59e0b}
+    .toast.rem .ti{color:var(--text-dim)}
+    .toast.clr .ti{color:#f87171}
+  </style>
 </head>
 <body>
   <nav class="navbar" id="navbar">
@@ -30,9 +101,7 @@
         <a href="register.html" class="nav-btn-register">Kayıt Ol</a>
       </div>
       <button class="hamburger" id="hamburger" aria-label="Menüyü aç/kapat" aria-expanded="false">
-        <span></span>
-        <span></span>
-        <span></span>
+        <span></span><span></span><span></span>
       </button>
     </div>
   </nav>
@@ -46,79 +115,43 @@
     </div>
   </section>
 
+  <!-- FAVORİLER BAR -->
+  <div class="fav-bar">
+    <div class="container">
+      <div class="fav-info">
+        <i class="fas fa-star"></i>
+        <span>Favorilerim:</span>
+        <span class="fav-count" id="favCount">0</span>
+        <span id="favLabel">— kalp ikonuna tıklayarak ekleyin</span>
+      </div>
+      <div class="fav-actions">
+        <button class="btn-favs" id="btnFavs"><i class="fas fa-filter"></i> Favorileri Göster</button>
+        <button class="btn-clr" id="btnClr"><i class="fas fa-trash-alt"></i> Temizle</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- FİLTRE -->
+  <div class="filter-bar">
+    <div class="container">
+      <span class="fl"><i class="fas fa-sliders-h"></i> Filtrele:</span>
+      <button class="fbtn on" data-f="all">Tümü</button>
+      <button class="fbtn" data-f="web">Web</button>
+      <button class="fbtn" data-f="eticaret">E-Ticaret</button>
+      <button class="fbtn" data-f="db">Veritabanı</button>
+      <button class="fbtn" data-f="python">Python</button>
+      <button class="fbtn" data-f="api">API</button>
+      <button class="fbtn" data-f="debug">Debug</button>
+    </div>
+  </div>
+
+  <!-- HİZMETLER — JSON'dan dinamik yüklenir -->
   <section class="services-page">
     <div class="container">
-      <div class="services-grid">
-
-        <div class="service-card">
-          <div class="service-icon"><i class="fas fa-globe"></i></div>
-          <div class="service-title">Web Sitesi Geliştirme</div>
-          <p class="service-desc">HTML, CSS, JavaScript ve PHP kullanarak responsive, modern web siteleri.</p>
-          <div class="service-items">
-            <div class="service-item"><i class="fas fa-check-circle"></i> Kurumsal / Kişisel Siteler</div>
-            <div class="service-item"><i class="fas fa-check-circle"></i> Admin Paneli</div>
-            <div class="service-item"><i class="fas fa-check-circle"></i> Mobil Uyumlu Tasarım</div>
-            <div class="service-item"><i class="fas fa-check-circle"></i> SEO Temelleri</div>
-          </div>
-        </div>
-
-        <div class="service-card">
-          <div class="service-icon"><i class="fas fa-shopping-cart"></i></div>
-          <div class="service-title">E-Ticaret Çözümleri</div>
-          <p class="service-desc">Ürün yönetimi, ödeme entegrasyonu ve sipariş takibi olan alışveriş siteleri.</p>
-          <div class="service-items">
-            <div class="service-item"><i class="fas fa-check-circle"></i> Ürün Kataloğu</div>
-            <div class="service-item"><i class="fas fa-check-circle"></i> Sepet & Sipariş</div>
-            <div class="service-item"><i class="fas fa-check-circle"></i> Stok Yönetimi</div>
-            <div class="service-item"><i class="fas fa-check-circle"></i> Müşteri Paneli</div>
-          </div>
-        </div>
-
-        <div class="service-card">
-          <div class="service-icon"><i class="fas fa-database"></i></div>
-          <div class="service-title">Veritabanı Tasarımı</div>
-          <p class="service-desc">MySQL ile normalize edilmiş, performanslı veritabanı şemaları ve sorgular.</p>
-          <div class="service-items">
-            <div class="service-item"><i class="fas fa-check-circle"></i> Şema Tasarımı</div>
-            <div class="service-item"><i class="fas fa-check-circle"></i> Sorgu Optimizasyonu</div>
-            <div class="service-item"><i class="fas fa-check-circle"></i> Veri Göçü</div>
-          </div>
-        </div>
-
-        <div class="service-card">
-          <div class="service-icon"><i class="fab fa-python"></i></div>
-          <div class="service-title">Python Otomasyon</div>
-          <p class="service-desc">Tekrarlayan işleri otomatikleştiren scriptler ve otomasyon araçları.</p>
-          <div class="service-items">
-            <div class="service-item"><i class="fas fa-check-circle"></i> Web Scraping</div>
-            <div class="service-item"><i class="fas fa-check-circle"></i> Dosya İşlemleri</div>
-            <div class="service-item"><i class="fas fa-check-circle"></i> API Entegrasyonu</div>
-            <div class="service-item"><i class="fas fa-check-circle"></i> Veri Analizi</div>
-          </div>
-        </div>
-
-        <div class="service-card">
-          <div class="service-icon"><i class="fas fa-plug"></i></div>
-          <div class="service-title">REST API Geliştirme</div>
-          <p class="service-desc">Backend servisleri ve mobil/web uygulamalar için API tasarımı.</p>
-          <div class="service-items">
-            <div class="service-item"><i class="fas fa-check-circle"></i> CRUD Endpoint'leri</div>
-            <div class="service-item"><i class="fas fa-check-circle"></i> JWT / Session Auth</div>
-            <div class="service-item"><i class="fas fa-check-circle"></i> Dokümantasyon</div>
-          </div>
-        </div>
-
-        <div class="service-card">
-          <div class="service-icon"><i class="fas fa-bug"></i></div>
-          <div class="service-title">Kod İnceleme & Debug</div>
-          <p class="service-desc">Mevcut projenizde hata tespiti, performans iyileştirme ve kod kalitesi analizi.</p>
-          <div class="service-items">
-            <div class="service-item"><i class="fas fa-check-circle"></i> Bug Tespiti</div>
-            <div class="service-item"><i class="fas fa-check-circle"></i> Refactoring</div>
-            <div class="service-item"><i class="fas fa-check-circle"></i> Performans Analizi</div>
-          </div>
-        </div>
-
+      <div class="services-grid" id="grid">
+        <div class="sk"><div class="sk-i"></div><div class="sk-l s"></div><div class="sk-l f"></div><div class="sk-l m"></div></div>
+        <div class="sk"><div class="sk-i"></div><div class="sk-l s"></div><div class="sk-l f"></div><div class="sk-l m"></div></div>
+        <div class="sk"><div class="sk-i"></div><div class="sk-l s"></div><div class="sk-l f"></div><div class="sk-l m"></div></div>
       </div>
     </div>
   </section>
@@ -129,8 +162,182 @@
       <p class="footer-sub">Sevgiyle kodlandı <i class="fas fa-heart"></i></p>
     </div>
   </footer>
-  
+
   <button class="scroll-top" id="scrollTop" aria-label="Sayfanın başına git"><i class="fas fa-chevron-up"></i></button>
+  <div class="toast-wrap" id="toastWrap"></div>
+
   <script src="../assets/js/main.js"></script>
+  <script>
+  (function () {
+    var KEY = 'hamzagokalp_favs';
+
+    /* Filtre → hizmet id eşleşmesi */
+    var FM = { all:[1,2,3,4,5,6], web:[1], eticaret:[2], db:[3], python:[4], api:[5], debug:[6] };
+
+    /* localStorage yardımcıları */
+    function getFavs()  { try { return JSON.parse(localStorage.getItem(KEY)) || []; } catch(e) { return []; } }
+    function setFavs(f) { localStorage.setItem(KEY, JSON.stringify(f)); }
+    function isFav(id)  { return getFavs().includes(id); }
+    function toggleFav(id) {
+      var f = getFavs();
+      if (f.includes(id)) { setFavs(f.filter(function(x){ return x !== id; })); return false; }
+      f.push(id); setFavs(f); return true;
+    }
+
+    /* Toast */
+    function toast(msg, cls) {
+      var icon = cls === 'add' ? 'fas fa-heart' : cls === 'rem' ? 'far fa-heart' : 'fas fa-trash-alt';
+      var wrap = document.getElementById('toastWrap');
+      var t = document.createElement('div');
+      t.className = 'toast ' + cls;
+      t.innerHTML = '<span class="ti"><i class="' + icon + '"></i></span> ' + msg;
+      wrap.appendChild(t);
+      setTimeout(function () { t.classList.add('out'); setTimeout(function () { t.remove(); }, 300); }, 2600);
+    }
+
+    /* Sayaç güncelle */
+    function updateCount() {
+      var n = getFavs().length;
+      document.getElementById('favCount').textContent = n;
+      document.getElementById('favLabel').textContent = n === 0 ? '— kalp ikonuna tıklayarak ekleyin' : 'kayıtlı hizmet';
+    }
+
+    /* Boş durum */
+    function checkEmpty() {
+      var grid = document.getElementById('grid');
+      var vis  = grid.querySelectorAll('.service-card:not(.hidden)').length;
+      var em   = grid.querySelector('.empty-state');
+      if (vis === 0) {
+        if (!em) {
+          em = document.createElement('div');
+          em.className = 'empty-state show';
+          em.innerHTML = '<i class="far fa-star"></i><h3>Favori bulunamadı</h3><p>Kalp ikonuna tıklayarak hizmetleri favorilere ekleyebilirsiniz.</p>';
+          grid.appendChild(em);
+        } else em.classList.add('show');
+      } else if (em) em.classList.remove('show');
+    }
+
+    var curFilter = 'all', onlyFavs = false;
+
+    function applyView() {
+      var cards = document.querySelectorAll('.service-card');
+      var allowed = FM[curFilter];
+      cards.forEach(function (c) {
+        var id = parseInt(c.dataset.id);
+        c.classList.toggle('hidden', !(allowed.includes(id) && (!onlyFavs || isFav(id))));
+      });
+      checkEmpty();
+    }
+
+    /* Kart oluştur */
+    function makeCard(s, delay) {
+      var faved = isFav(s.id);
+      var items = s.items.map(function (it) {
+        return '<div class="service-item"><i class="fas fa-check-circle"></i> ' + it + '</div>';
+      }).join('');
+      var badge = s.badge ? '<span class="card-badge">' + s.badge + '</span>' : '';
+
+      var card = document.createElement('div');
+      card.className = 'service-card' + (faved ? ' fav' : '');
+      card.dataset.id = s.id;
+      card.style.opacity = '0';
+      card.style.transform = 'translateY(16px)';
+      card.innerHTML =
+        badge +
+        '<div class="service-icon"><i class="' + s.icon + '"></i></div>' +
+        '<div class="service-title">' + s.title + '</div>' +
+        '<p class="service-desc">' + s.desc + '</p>' +
+        '<div class="service-items">' + items + '</div>' +
+        '<div class="card-foot">' +
+          '<a href="contact.html" class="card-link">İletişime geç <i class="fas fa-arrow-right"></i></a>' +
+          '<button class="btn-fav' + (faved ? ' on' : '') + '" data-id="' + s.id + '" title="' + (faved ? 'Favorilerden çıkar' : 'Favorilere ekle') + '">' +
+            '<i class="' + (faved ? 'fas' : 'far') + ' fa-heart"></i>' +
+          '</button>' +
+        '</div>';
+
+      /* Giriş animasyonu */
+      setTimeout(function () {
+        card.style.transition = 'opacity .4s ease, transform .4s ease';
+        card.style.opacity = '1';
+        card.style.transform = 'none';
+      }, delay);
+
+      /* Favori butonu */
+      card.querySelector('.btn-fav').addEventListener('click', function () {
+        var id = parseInt(this.dataset.id);
+        var added = toggleFav(id);
+        this.classList.toggle('on', added);
+        this.querySelector('i').className = (added ? 'fas' : 'far') + ' fa-heart';
+        this.title = added ? 'Favorilerden çıkar' : 'Favorilere ekle';
+        card.classList.toggle('fav', added);
+        updateCount();
+        toast(added ? '"' + s.title + '" favorilere eklendi!' : '"' + s.title + '" çıkarıldı.', added ? 'add' : 'rem');
+        if (onlyFavs && !added) { card.classList.add('hidden'); checkEmpty(); }
+      });
+
+      return card;
+    }
+
+    /* JSON yükle */
+    function load() {
+      fetch('../data/services.json')
+        .then(function (r) { if (!r.ok) throw new Error(); return r.json(); })
+        .then(function (list) {
+          var grid = document.getElementById('grid');
+          grid.innerHTML = '';
+          list.forEach(function (s, i) { grid.appendChild(makeCard(s, i * 80)); });
+          updateCount();
+          applyView();
+        })
+        .catch(function () {
+          document.getElementById('grid').innerHTML =
+            '<p style="grid-column:1/-1;text-align:center;color:var(--text-dim);padding:40px">Yükleme hatası — sayfayı yenileyin.</p>';
+        });
+    }
+
+    /* Filtre butonları */
+    document.querySelectorAll('.fbtn').forEach(function (b) {
+      b.addEventListener('click', function () {
+        document.querySelectorAll('.fbtn').forEach(function (x) { x.classList.remove('on'); });
+        this.classList.add('on');
+        curFilter = this.dataset.f;
+        applyView();
+      });
+    });
+
+    /* Favorileri göster/gizle */
+    document.getElementById('btnFavs').addEventListener('click', function () {
+      onlyFavs = !onlyFavs;
+      this.classList.toggle('on', onlyFavs);
+      this.innerHTML = onlyFavs
+        ? '<i class="fas fa-th"></i> Tümünü Göster'
+        : '<i class="fas fa-filter"></i> Favorileri Göster';
+      applyView();
+    });
+
+    /* Favorileri temizle */
+    document.getElementById('btnClr').addEventListener('click', function () {
+      var n = getFavs().length;
+      if (!n) { toast('Favori bulunmuyor.', 'rem'); return; }
+      setFavs([]);
+      updateCount();
+      document.querySelectorAll('.service-card').forEach(function (c) {
+        c.classList.remove('fav');
+        var b = c.querySelector('.btn-fav');
+        if (b) { b.classList.remove('on'); b.querySelector('i').className = 'far fa-heart'; b.title = 'Favorilere ekle'; }
+      });
+      if (onlyFavs) {
+        onlyFavs = false;
+        var bf = document.getElementById('btnFavs');
+        bf.classList.remove('on');
+        bf.innerHTML = '<i class="fas fa-filter"></i> Favorileri Göster';
+        applyView();
+      }
+      toast(n + ' favori temizlendi.', 'clr');
+    });
+
+    load();
+  })();
+  </script>
 </body>
 </html>

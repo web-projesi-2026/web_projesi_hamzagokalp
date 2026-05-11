@@ -1,0 +1,50 @@
+[
+  {
+    "id": 1,
+    "icon": "fas fa-globe",
+    "title": "Web Sitesi Geliştirme",
+    "desc": "HTML, CSS, JavaScript ve PHP kullanarak responsive, modern web siteleri.",
+    "items": ["Kurumsal / Kişisel Siteler", "Admin Paneli", "Mobil Uyumlu Tasarım", "SEO Temelleri"],
+    "badge": "Popüler"
+  },
+  {
+    "id": 2,
+    "icon": "fas fa-shopping-cart",
+    "title": "E-Ticaret Çözümleri",
+    "desc": "Ürün yönetimi, ödeme entegrasyonu ve sipariş takibi olan alışveriş siteleri.",
+    "items": ["Ürün Kataloğu", "Sepet & Sipariş", "Stok Yönetimi", "Müşteri Paneli"],
+    "badge": ""
+  },
+  {
+    "id": 3,
+    "icon": "fas fa-database",
+    "title": "Veritabanı Tasarımı",
+    "desc": "MySQL ile normalize edilmiş, performanslı veritabanı şemaları ve sorgular.",
+    "items": ["Şema Tasarımı", "Sorgu Optimizasyonu", "Veri Göçü"],
+    "badge": ""
+  },
+  {
+    "id": 4,
+    "icon": "fab fa-python",
+    "title": "Python Otomasyon",
+    "desc": "Tekrarlayan işleri otomatikleştiren scriptler ve otomasyon araçları.",
+    "items": ["Web Scraping", "Dosya İşlemleri", "API Entegrasyonu", "Veri Analizi"],
+    "badge": ""
+  },
+  {
+    "id": 5,
+    "icon": "fas fa-plug",
+    "title": "REST API Geliştirme",
+    "desc": "Backend servisleri ve mobil/web uygulamalar için API tasarımı.",
+    "items": ["CRUD Endpoint'leri", "JWT / Session Auth", "Dokümantasyon"],
+    "badge": "Yeni"
+  },
+  {
+    "id": 6,
+    "icon": "fas fa-bug",
+    "title": "Kod İnceleme & Debug",
+    "desc": "Mevcut projenizde hata tespiti, performans iyileştirme ve kod kalitesi analizi.",
+    "items": ["Bug Tespiti", "Refactoring", "Performans Analizi"],
+    "badge": ""
+  }
+]
