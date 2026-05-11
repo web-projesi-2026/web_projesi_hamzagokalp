@@ -279,20 +279,34 @@
     }
 
     /* JSON yükle */
+    /* ── Hizmet verileri (JSON dosyasından alınan sabit veri) ── */
+    var SERVICES_DATA = [
+      { id:1, icon:'fas fa-globe',        title:'Web Sitesi Geliştirme',  badge:'Popüler',
+        desc:'HTML, CSS, JavaScript ve PHP kullanarak responsive, modern web siteleri.',
+        items:['Kurumsal / Kişisel Siteler','Admin Paneli','Mobil Uyumlu Tasarım','SEO Temelleri'] },
+      { id:2, icon:'fas fa-shopping-cart', title:'E-Ticaret Çözümleri',   badge:'',
+        desc:'Ürün yönetimi, ödeme entegrasyonu ve sipariş takibi olan alışveriş siteleri.',
+        items:['Ürün Kataloğu','Sepet & Sipariş','Stok Yönetimi','Müşteri Paneli'] },
+      { id:3, icon:'fas fa-database',      title:'Veritabanı Tasarımı',   badge:'',
+        desc:'MySQL ile normalize edilmiş, performanslı veritabanı şemaları ve sorgular.',
+        items:['Şema Tasarımı','Sorgu Optimizasyonu','Veri Göçü'] },
+      { id:4, icon:'fab fa-python',        title:'Python Otomasyon',      badge:'',
+        desc:'Tekrarlayan işleri otomatikleştiren scriptler ve otomasyon araçları.',
+        items:['Web Scraping','Dosya İşlemleri','API Entegrasyonu','Veri Analizi'] },
+      { id:5, icon:'fas fa-plug',          title:'REST API Geliştirme',   badge:'Yeni',
+        desc:'Backend servisleri ve mobil/web uygulamalar için API tasarımı.',
+        items:["CRUD Endpoint'leri","JWT / Session Auth",'Dokümantasyon'] },
+      { id:6, icon:'fas fa-bug',           title:'Kod İnceleme & Debug',  badge:'',
+        desc:'Mevcut projenizde hata tespiti, performans iyileştirme ve kod kalitesi analizi.',
+        items:['Bug Tespiti','Refactoring','Performans Analizi'] }
+    ];
+
     function load() {
-      fetch('../data/services.json')
-        .then(function (r) { if (!r.ok) throw new Error(); return r.json(); })
-        .then(function (list) {
-          var grid = document.getElementById('grid');
-          grid.innerHTML = '';
-          list.forEach(function (s, i) { grid.appendChild(makeCard(s, i * 80)); });
-          updateCount();
-          applyView();
-        })
-        .catch(function () {
-          document.getElementById('grid').innerHTML =
-            '<p style="grid-column:1/-1;text-align:center;color:var(--text-dim);padding:40px">Yükleme hatası — sayfayı yenileyin.</p>';
-        });
+      var grid = document.getElementById('grid');
+      grid.innerHTML = '';
+      SERVICES_DATA.forEach(function (s, i) { grid.appendChild(makeCard(s, i * 80)); });
+      updateCount();
+      applyView();
     }
 
     /* Filtre butonları */
